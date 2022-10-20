@@ -18,8 +18,8 @@ const [routines, setRoutines] = useState([]);
 
 async function fetchRoutines() {
  const results= await getRoutines()
- console.log(results);
-
+ setRoutines(results)
+ 
 }
 
 
