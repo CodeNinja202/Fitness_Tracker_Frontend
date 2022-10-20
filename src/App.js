@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {Route, Routes} from 'react-router-dom';
 
 import {
@@ -11,9 +11,21 @@ import {
    Register,
    Routines,
   } from "./components";
-
+import { getRoutines } from './api'
 
 const App = () => {
+const [routines, setRoutines] = useState([]);
+
+async function fetchRoutines() {
+ const results= await getRoutines()
+ console.log(results);
+
+}
+
+
+useEffect(() => {
+    fetchRoutines()
+}, [])
     return ( 
         <div>
         <Navbar />
@@ -22,7 +34,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/activities" element={<Activites />} />
-        <Route path="/routines" element={<Routines />} />
+        <Route path="/routines" element={<Routines routines={routines}/>} />
         <Route path="/my_routines" element={<MyRoutines />} />
        
         </Routes>
