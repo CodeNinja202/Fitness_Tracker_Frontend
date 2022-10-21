@@ -21,7 +21,7 @@ async function fetchRoutines() {
  setRoutines(results)
  
 }
-
+console.log(routines)
 
 useEffect(() => {
     fetchRoutines()
