@@ -11,18 +11,27 @@ import {
    Register,
    Routines,
   } from "./components";
-import { getRoutines } from './api'
+import { getRoutines, getActivities } from './api'
 
 const App = () => {
 const [routines, setRoutines] = useState([]);
+const [activities, setActivies] = useState([]);
+
+async function fetchActivities() {
+    const results= await getActivities()
+    setActivies(results)
+    
+   }
 
 async function fetchRoutines() {
  const results= await getRoutines()
  setRoutines(results)
  
 }
-console.log(routines)
 
+useEffect(() => {
+    fetchActivities()
+}, [])
 useEffect(() => {
     fetchRoutines()
 }, [])
@@ -33,7 +42,7 @@ useEffect(() => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/activities" element={<Activites />} />
+        <Route path="/activities" element={<Activites activities={activities}/>} />
         <Route path="/routines" element={<Routines routines={routines}/>} />
         <Route path="/my_routines" element={<MyRoutines />} />
        
