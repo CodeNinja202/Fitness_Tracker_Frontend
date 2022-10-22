@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React  from "react";
 import { Paper } from "@mui/material";
 const Routines = ({ routines }) => {
   return (
@@ -7,8 +7,8 @@ const Routines = ({ routines }) => {
         const { creatorName, name, goal,id, activities} = routine;
 
         return (
-          <Paper>
-          <Fragment key={id}>
+          <Paper key={id}>
+          
           
             <p><b>Created by:</b> {creatorName}</p>
             <p><b>Workout routine:</b> {name}</p>
@@ -17,18 +17,17 @@ const Routines = ({ routines }) => {
               activities.map(activity => {
                 const {description, duration, count, id} = activity;
                return (
-                <Fragment key={id}>
+                <div key={id}>
                 <p><b>Description: </b>{description}</p>
                 <p><b>Duration: </b>{duration}</p>
                 <p><b>Count: </b>{count}</p>
-                </Fragment>
+                </div>
                )
                
 
               })
               }
-          
-          </Fragment>
+         
           </Paper>
         );
         
