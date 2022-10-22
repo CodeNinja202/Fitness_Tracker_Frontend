@@ -6,36 +6,53 @@ import { Button } from "@mui/material";
 const Navbar = ({ logout, token }) => {
     return (
       <header>
-        <nav>
-        <Link to="/"> Home</Link>
-        <Link to="/activities"> Activities</Link>
-        <Link to="/routines"> Routines</Link>
-  
-          
+        <nav className='Navbar'>
+        <Button>
+          <Link 
+            style={{ textDecoration: 'none' }} to="/">
+              Home
+          </Link>
+        </Button>
+        <Button>
+          <Link 
+            style={{ textDecoration: 'none' }} to="/activities">
+              Activities
+          </Link>
+        </Button>
+        <Button>
+          <Link 
+            style={{ textDecoration: 'none' }} to="/routines">
+              Routines
+          </Link>
+        </Button>
   
           {token ? (
             <>
-              
-              <Link to="/my_routines"> My Routines</Link>
-              <Link
-                style={{ textDecoration: "none" }}
-                to="/"
-                onClick={() => logout()}
-              >
-                <Button
-                  style={{
-                   
-                    borderColor: "black",
-                    
-                  }}
-                  variant="outlined"
-                >
-                  Logout
-                </Button>
-              </Link>
+              <Button>
+                <Link 
+                  style={{ textDecoration: 'none'}}
+                  to="/my_routines">
+                    My Routines
+                </Link>
+              </Button>
+              <Button 
+                style={{ borderColor: "black"}}
+                variant="outlined">
+                <Link 
+                  style={{ textDecoration: "none" }}
+                  to="/" onClick={() => logout()}>
+                    Logout
+                </Link>
+              </Button>
             </>
             ) : (
-                <Link to="/login"> Login</Link>
+              <Button>
+                <Link 
+                  style={{textDecoration: 'none' }}
+                  to="/login"> 
+                    Login
+                </Link>
+              </Button>
           )}
         </nav>
       </header>
