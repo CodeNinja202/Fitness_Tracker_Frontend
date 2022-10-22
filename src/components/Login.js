@@ -13,7 +13,7 @@ const Login = ({ setToken, navigate }) => {
     if (results) {
       setToken(results.token);
       window.localStorage.setItem('token', results.token);
-      navigate('/activities');
+      navigate('/');
     } else {
       console.log('error occured', results);
     }
