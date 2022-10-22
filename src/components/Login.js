@@ -15,7 +15,7 @@ const Login = ({ setToken, navigate }) => {
       window.localStorage.setItem('token', results.token);
       navigate('/');
     } else {
-      alert("Incorrect Password")
+      alert("Incorrect Username/Password")
       console.log('error occured', results);
     }
   };
