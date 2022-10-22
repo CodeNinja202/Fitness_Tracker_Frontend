@@ -89,3 +89,29 @@ export const getUserDetails = async (token) => {
     console.log('error getting users details')
   }
 }
+
+
+export const createRoutine = async (token, {name, goal, isPublic})=> {
+  try {
+    const response = await fetch(`${baseURL}/routines`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+       
+          name,
+          goal,
+          isPublic,
+        
+     
+      })
+    })
+    
+    const result = await response.json();
+    return result;
+  } catch(ex) {
+    console.log('error creating a new post')
+  }
+}

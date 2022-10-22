@@ -9,6 +9,7 @@ import {
   MyRoutines,
   Register,
   Routines,
+  CreateRoutine,
 } from "./components";
 import { getRoutines, getActivities, getUserDetails } from "./api";
 
@@ -92,6 +93,7 @@ const App = () => {
           navigate={navigate}  />}
         />
         <Route path="/routines" element={<Routines routines={routines} />} />
+        <Route path="/routines/create_routine" element={<CreateRoutine />} />
         <Route path="/my_routines" element={<MyRoutines />} />
       </Routes>
     </div>
