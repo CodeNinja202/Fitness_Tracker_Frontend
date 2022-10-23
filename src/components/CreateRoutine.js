@@ -22,7 +22,7 @@ const CreateRoutine = ({token, navigate, fetchRoutines}) => {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        addPost();
+        addRoutine();
       }}
     >
       <TextField 
