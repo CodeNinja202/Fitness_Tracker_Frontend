@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { createRoutine } from '../api';
 import { Paper, TextField, Button, Link } from "@mui/material";
-import '../App'
 
-const CreateRoutine = (token, navigate, fetchRoutines) => {
+
+const CreateRoutine = ({token, navigate, fetchRoutines}) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
 

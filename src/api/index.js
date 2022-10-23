@@ -133,6 +133,8 @@ export const createActivity = async (token, {name, description})=> {
      
       })
     })
+
+    
     
     const result = await response.json();
     return result;

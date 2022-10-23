@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { createActivity } from '../api';
 import {  TextField, Button, } from "@mui/material";
-import '../App'
 
-const CreateActivity = (token, navigate, fetchActivities) => {
+
+const CreateActivity = ({token, navigate, fetchActivities}) => {
   const [name, setName] = useState("");
   const [description , setDescription ] = useState("");
 
