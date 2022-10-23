@@ -10,11 +10,12 @@ const Login = ({ setToken, navigate }) => {
   const handleSubmit = async () => {
     const results = await loginUser(username, password);
     console.log(results);
-    if (results) {
+    if (results.token) {
       setToken(results.token);
       window.localStorage.setItem('token', results.token);
       navigate('/');
     } else {
+      alert("Incorrect Username/Password")
       console.log('error occured', results);
     }
   };
@@ -28,18 +29,15 @@ const Login = ({ setToken, navigate }) => {
         }}
       >
         <TextField
-          inputProps={{ minLength: 8 }}
-          required
-          title="8 character minimum"
+          
           type="text"
           placeholder="Username"
           onChange={(event) => setUsername(event.target.value)}
         />
   
         <TextField
-          inputProps={{ minLength: 8 }}
-          required
-          title="8 character minimum"
+         
+        
           type="password"
           placeholder="Password"
           onChange={(event) => setPassword(event.target.value)}

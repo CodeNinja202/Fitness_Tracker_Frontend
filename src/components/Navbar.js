@@ -7,16 +7,16 @@ const Navbar = ({ logout, token }) => {
     return (
       <header>
         <nav>
-        <Link to="/"> Home</Link>
-        <Link to="/activities"> Activities</Link>
-        <Link to="/routines"> Routines</Link>
+        <Link style={{ textDecoration: 'none' }} to="/"> Home</Link>
+        <Link style={{ textDecoration: 'none' }} to="/activities"> Activities</Link>
+        <Link style={{ textDecoration: 'none' }} to="/routines"> Routines</Link>
   
           
   
           {token ? (
             <>
               
-              <Link to="/my_routines"> My Routines</Link>
+              <Link style={{ textDecoration: 'none' }} to="/my_routines"> My Routines</Link>
               <Link
                 style={{ textDecoration: "none" }}
                 to="/"
@@ -35,7 +35,10 @@ const Navbar = ({ logout, token }) => {
               </Link>
             </>
             ) : (
-                <Link to="/login"> Login</Link>
+              <>
+              <Link style={{ textDecoration: 'none' }} to='/register'>Register</Link>
+                <Link style={{ textDecoration: 'none' }} to="/login"> Login</Link>
+                </>
           )}
         </nav>
       </header>
