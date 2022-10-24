@@ -142,3 +142,22 @@ export const createActivity = async (token, {name, description})=> {
     console.log('error creating a new activity')
   }
 }
+
+// export const getUsersRoutines = async() => {
+//   try {
+//     const response = await fetch(`${baseURL}/users/:username/routines`, {
+//       headers: {
+//         'Content-Type': 'application/json',
+       
+        
+        
+        
+//       }
+//     });
+//     const results = await response.json();
+    
+//     return results;
+//   } catch(error) {
+//     console.log('error getting all users routines')
+//   }
+// }

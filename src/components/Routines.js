@@ -4,7 +4,7 @@ const Routines = ({ routines, token }) => {
   return (
     <div className="main-div-routines">
       {routines.map((routine) => {
-        const { creatorName, name, goal, id, activities } = routine;
+        const { creatorName, name, goal, id, activities} = routine;
   
         return (
 
@@ -21,7 +21,13 @@ const Routines = ({ routines, token }) => {
             </p>
             <p>
               <b>Activities:</b>
+
             </p>
+            {token ? (
+                    <button>You are the Author</button>
+                  ) : (
+                    <button>You are not the Author</button>
+                  )}
             {activities.map((activity) => {
               const { description, duration, count, id } = activity;
               return (
@@ -39,11 +45,7 @@ const Routines = ({ routines, token }) => {
                     {count}
                   </p>
 
-                  {token ? (
-                    <button>You are the Author</button>
-                  ) : (
-                    <button>You are not the Author</button>
-                  )}
+                
                 </div>
               );
             })}
