@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createRoutine } from '../api';
-import { Paper, TextField, Button, Link } from "@mui/material";
+import { TextField, Button, Link } from "@mui/material";
 
 
 const CreateRoutine = ({token, navigate, fetchRoutines}) => {
@@ -10,6 +10,7 @@ const CreateRoutine = ({token, navigate, fetchRoutines}) => {
   const newRoutine = {
     name,
     goal,
+    isPublic:true
   };
 
   async function addRoutine() {
