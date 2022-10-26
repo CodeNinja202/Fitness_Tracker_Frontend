@@ -1,11 +1,15 @@
 import React from "react";
 import { Paper } from "@mui/material";
+import { Link } from "react-router-dom";
 const Routines = ({ routines, token }) => {
   return (
+
+    
     <div className="main-div-routines">
+     
       {routines.map((routine) => {
-        const { creatorName, name, goal, id, activities} = routine;
-  
+        const { creatorName, name, goal, id, activities, isPublic } = routine;
+      
         return (
 
           
@@ -23,13 +27,16 @@ const Routines = ({ routines, token }) => {
               <b>Activities:</b>
 
             </p>
-            {token ? (
-                    <button>You are the Author</button>
-                  ) : (
-                    <button>You are not the Author</button>
-                  )}
+            { token ? (
+      <Link style={{ textDecoration: 'none' }} to="/routines/edit-routine/:routineId"> Edit Routine</Link>
+     ) :(
+      <button>View</button>
+     )
+     
+     
+     }
             {activities.map((activity) => {
-              const { description, duration, count, id } = activity;
+              const { description, duration, count, id,  } = activity;
               return (
                 <div key={id}>
                   <p>
@@ -44,8 +51,8 @@ const Routines = ({ routines, token }) => {
                     <b>Count: </b>
                     {count}
                   </p>
-
-                
+     
+      
                 </div>
               );
             })}

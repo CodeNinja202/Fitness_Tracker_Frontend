@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
 
 <Link style={{ textDecoration: 'none' }} to="/routines/create_routine"><Button> Create A Routine</Button></Link>
-const MyRoutines = ( {routinesByUser, token} ) => {
+const MyRoutines = ( ) => {
     return (
       <div className="main-div-routinesByUser">
         <h1>My Routines</h1>
