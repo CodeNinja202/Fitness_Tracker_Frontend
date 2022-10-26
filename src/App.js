@@ -9,12 +9,15 @@ import {
   MyRoutines,
   Register,
   Routines,
+  CreateRoutine,
+  CreateActivity,
 } from "./components";
-import { getRoutines, getActivities, getUserDetails } from "./api";
+import { getRoutines, getActivities, getUserDetails,   } from "./api";
 
 const App = () => {
   const [routines, setRoutines] = useState([]);
   const [activities, setActivies] = useState([]);
+  // const [routinesByUser, setUserRoutines] = useState([]);
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
 
@@ -35,12 +38,16 @@ const App = () => {
     const results = await getActivities();
     setActivies(results);
   }
+ 
 
   async function fetchRoutines() {
     const results = await getRoutines();
     setRoutines(results);
   }
-
+  // async function fetchUserRoutines() {
+  //   const results = await getUsersRoutines();
+  //   setUserRoutines(results);
+  // }
   async function getMe() {
     const storedToken = window.localStorage.getItem('token');
 
@@ -61,7 +68,7 @@ const App = () => {
       console.log("CAN NOT GET USERS DETAILS");
     }
   }
-
+ 
   useEffect(() => {
     fetchActivities()
   }, [])
@@ -69,10 +76,13 @@ const App = () => {
   useEffect(() => {
     fetchRoutines()
   }, [token])
-
+  // useEffect(() => {
+  //   fetchUserRoutines()
+  // }, [token])
   useEffect(() => {
     getMe();
   },[token])
+
   return (
     <div>
       <Navbar logout={logout} token={token} />
@@ -91,8 +101,15 @@ const App = () => {
           element={<Activites activities={activities} token={token}
           navigate={navigate}  />}
         />
+        <Route
+          path="/activities/create_activity"
+          element={<CreateActivity token={token}
+          navigate={navigate} fetchActivities={fetchActivities} />}
+        />
         <Route path="/routines" element={<Routines routines={routines} />} />
-        <Route path="/my_routines" element={<MyRoutines />} />
+        <Route path="/routines/create_routine" element={<CreateRoutine token={token} fetchRoutines={fetchRoutines}  navigate={navigate} />} />
+       
+        <Route path="/my_routines" element={<MyRoutines  />}  />
       </Routes>
     </div>
   );

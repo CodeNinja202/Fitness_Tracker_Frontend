@@ -28,6 +28,7 @@ const Register = ({ setToken }) => {
       window.localStorage.setItem("token", results.token);
       navigate("/");
     } else {
+      alert("Username Already Exsist")
       console.log(results.error.message);
     }
   };
