@@ -11,8 +11,9 @@ import {
   Routines,
   CreateRoutine,
   CreateActivity,
+  EditRoutine,
 } from "./components";
-import { getRoutines, getActivities, getUserDetails,   } from "./api";
+import { getRoutines, getActivities, getUserDetails } from "./api";
 
 const App = () => {
   const [routines, setRoutines] = useState([]);
@@ -21,6 +22,8 @@ const App = () => {
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
 
+  ///////////////////////TEST
+console.log("WHO is you",user)
   const navigate = useNavigate();
   function logout() {
     window.localStorage.removeItem("token");
@@ -61,8 +64,9 @@ const App = () => {
  
     const results = await getUserDetails(token);
     if (results.username) {
-        console.log("Users Logged in")
+       
       setUser(results.data);
+      console.log("Users Logged in", results.data)
     } else {
         console.log("User Not logged IN")
       console.log("CAN NOT GET USERS DETAILS");
@@ -106,8 +110,20 @@ const App = () => {
           element={<CreateActivity token={token}
           navigate={navigate} fetchActivities={fetchActivities} />}
         />
-        <Route path="/routines" element={<Routines routines={routines} />} />
+        <Route path="/routines" element={<Routines routines={routines}  token={token}/>} />
         <Route path="/routines/create_routine" element={<CreateRoutine token={token} fetchRoutines={fetchRoutines}  navigate={navigate} />} />
+        <Route
+              exact
+              path="/routines/edit-routine/:routineId"
+              element={
+                <EditRoutine
+                 routines={routines}
+                 token={token}
+                  fetchRoutines={fetchRoutines}
+                  navigate={navigate}
+                />
+              }
+            />
        
         <Route path="/my_routines" element={<MyRoutines  />}  />
       </Routes>

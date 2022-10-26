@@ -161,3 +161,46 @@ export const createActivity = async (token, {name, description})=> {
 //     console.log('error getting all users routines')
 //   }
 // }
+
+
+
+export const updateRoutine = async ({name, goal, isPublic}, routineId)=> {
+  try {
+    const response = await fetch(`${baseURL}/routines/:${routineId}`, {
+      method: "PATCH",
+      
+      body: JSON.stringify({
+       
+          name,
+         goal,
+         isPublic
+        
+     
+      })
+    })
+
+    
+    
+    const result = await response.json();
+    return result;
+  } catch(error) {
+    console.log('error updating new routine')
+  }
+}
+
+export const deleteRoutine = async (token, routineId) => {
+  try {
+    const response = await fetch(`${baseURL}/routines/:${routineId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const results = await response.json();
+    console.log(results)
+    return (results)
+  } catch (ex) {
+    console.log('error deleting routine')
+  }
+}
