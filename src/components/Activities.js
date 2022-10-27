@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 const Activities = ({ activities , token }) => {
   return (
     <div id="outer-div-element">
-       <Link style={{ textDecoration: 'none' }} to="/activities/create_activity"><Button> Create An Activity</Button></Link>
+          {token ? (
+            <>
+              <Link style={{ textDecoration: 'none' }} to="/activities/create_activity"><Button> Create An Activity</Button></Link>
+            </>
+            ): null }
       {activities.map((activity) => {
         
         const { description, name, id } = activity;
@@ -20,7 +24,7 @@ const Activities = ({ activities , token }) => {
               <b>Description: </b>
               {description}
             </p>
-
+         
            
          
 </Paper>

@@ -8,7 +8,7 @@ const Routines = ({ routines, token }) => {
     <div className="main-div-routines">
      
       {routines.map((routine) => {
-        const { creatorName, name, goal, id, activities, isPublic } = routine;
+        const { creatorName, name, goal, id, activities, creatorId } = routine;
       
         return (
 
