@@ -72,7 +72,7 @@ export const loginUser = async (username, password) => {
 
 
 export const getUserDetails = async (token) => {
-  console.log("TESTING TOKEN", token)
+  //console.log("TESTING TOKEN", token)
   try {
     const response = await fetch(`${baseURL}/users/me`, {
       headers: {
@@ -93,9 +93,9 @@ export const getUserDetails = async (token) => {
 
 console.log('TESTING API GET USER BEFORE GET USERS')
 export const getUsersRoutines = async (username) => {
-
+  console.log('testing username in API getUsersRoutines', username)
   try {
-    console.log(`testing username ${username}`)
+    
     const response = await fetch(`${baseURL}/users/${username}/routines`, {
       headers: {
         'Content-Type': 'application/json',

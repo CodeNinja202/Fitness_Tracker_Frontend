@@ -23,7 +23,9 @@ const App = () => {
   const [routinesByUser, setUserRoutines] = useState([]);
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
-  console.log("TESTING USER AT Beginning ", user)
+  //console.log("TESTING USER AT Beginning ", user)
+  //console.log("TESTING TOKEN AT Beginning ", token)
+ 
   ///////////////////////TEST
 
 
@@ -50,7 +52,7 @@ const App = () => {
   }
 
 
-console.log("WHO are you",user)
+//console.log("WHO are you",user)
   const navigate = useNavigate();
   function logout() {
     window.localStorage.removeItem("token");
@@ -59,11 +61,9 @@ console.log("WHO are you",user)
   }
 
   async function fetchUserRoutines(user) {
-    
-    console.log("fetchUserRoutines BEFORE getUsersRoutines TEST", user)
     const results = await getUsersRoutines(user);
-  
-    setUserRoutines(results.username)
+    setUserRoutines(results) // removed .username
+    console.log('new state', routinesByUser);
   }
 
   async function fetchActivities() {
@@ -87,8 +87,10 @@ console.log("WHO are you",user)
     fetchRoutines()
   }, [token])
   useEffect(() => {
-    fetchUserRoutines()
-  }, [])
+    if('username' in user){
+      fetchUserRoutines(user.username)
+    }
+  }, [user]) // --- changed to user
   useEffect(() => {
     getMe();
   },[token])
