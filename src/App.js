@@ -12,8 +12,10 @@ import {
   CreateRoutine,
   CreateActivity,
   EditRoutine,
+  EditActivity,
 } from "./components";
 import { getRoutines, getActivities, getUserDetails, getUsersRoutines } from "./api";
+
 
 const App = () => {
   const [routines, setRoutines] = useState([]);
@@ -114,6 +116,7 @@ console.log("WHO are you",user)
           element={<CreateActivity token={token}
           navigate={navigate} fetchActivities={fetchActivities} />}
         />
+        <Route path="/activities/edit/:activityId" element={<EditActivity token={token}fetchActivities={fetchActivities} activities={activities} />} />
         <Route path="/routines" element={<Routines routines={routines}  token={token}/>} />
         <Route path="/routines/create_routine" element={<CreateRoutine token={token} fetchRoutines={fetchRoutines}  navigate={navigate} />} />
         <Route

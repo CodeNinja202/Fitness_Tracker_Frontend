@@ -166,6 +166,32 @@ export const createActivity = async (token, {name, description})=> {
 
 
 
+
+export const updateActivity = async ({ name, description,id }, token) => {
+  try {
+    const response = await fetch(`${baseURL}/activities/${id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+
+        name,
+        description
+
+      })
+    })
+    const results = await response.json();
+    console.log(results)
+    return (results)
+
+  } catch (ex) {
+    console.log('error updating activity')
+  }
+}
+
+
 export const updateRoutine = async(token, {name, goal, isPublic}, routineId) => {
   console.log('beginning update')
   try {
