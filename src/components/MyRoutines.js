@@ -10,7 +10,7 @@ const MyRoutines = ({routinesByUser} ) => {
         <h1>My Routines</h1>
         
         <Link style={{ textDecoration: 'none' }} to="/routines/create_routine"><Button> Create A Routine</Button></Link>
-        {routinesByUser.map((userRoutine) => {
+        {routinesByUser?.map((userRoutine) => {
           const { creatorName, name, goal, id, activities} = userRoutine;
     
           return (

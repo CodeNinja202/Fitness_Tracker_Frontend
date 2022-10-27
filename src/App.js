@@ -61,7 +61,7 @@ console.log("WHO are you",user)
   async function fetchUserRoutines(user) {
     
     console.log("fetchUserRoutines BEFORE getUsersRoutines TEST", user)
-    const results = await getUsersRoutines( user);
+    const results = await getUsersRoutines(user);
   
     setUserRoutines(results.username)
   }
@@ -116,11 +116,11 @@ console.log("WHO are you",user)
           element={<CreateActivity token={token}
           navigate={navigate} fetchActivities={fetchActivities} />}
         />
-        <Route path="/activities/edit/:activityId" element={<EditActivity token={token}fetchActivities={fetchActivities} activities={activities} />} />
+        <Route path="/activities/edit/:activityId" element={<EditActivity activities={activities} token={token} fetchActivities={fetchActivities}  />} />
         <Route path="/routines" element={<Routines routines={routines}  token={token}/>} />
         <Route path="/routines/create_routine" element={<CreateRoutine token={token} fetchRoutines={fetchRoutines}  navigate={navigate} />} />
         <Route
-              exact
+             
               path="/routines/edit-routine/:routineId"
               element={
                 <EditRoutine
@@ -132,7 +132,7 @@ console.log("WHO are you",user)
               }
             />
        
-        <Route path="/my_routines" element={<MyRoutines routinesByUser={routinesByUser} fetchUserRoutines={fetchUserRoutines} />}  />
+        <Route path="/my_routines" element={<MyRoutines routinesByUser={routinesByUser}  fetchUserRoutines={fetchUserRoutines} />}  />
       </Routes>
     </div>
   );

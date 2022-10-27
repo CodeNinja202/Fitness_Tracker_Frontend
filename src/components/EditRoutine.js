@@ -2,10 +2,10 @@ import { React, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Paper, TextField, Button} from "@mui/material";
 import { updateRoutine, deleteRoutine } from "../api";
-const EditRoutine = ({user, token, routinesByUser, fetchUserRoutines}) => {
+const EditRoutine = ({ token, routinesByUser, fetchUserRoutines}) => {
     const { routineId } = useParams();
 
-     const [currentRoutine] = routinesByUser.filter((routine) => routine.id === routineId );
+     const [currentRoutine] = routinesByUser.filter(routine => routine.id === routineId *1);
   console.log("testing currentRoutine", currentRoutine)
      const { name, goal, isPublic } = currentRoutine;
   
@@ -28,6 +28,8 @@ const EditRoutine = ({user, token, routinesByUser, fetchUserRoutines}) => {
     return (
 
       <Paper elevation={5}>
+
+        editRoutine
         <h1>Edit</h1>
         <form
           class="form"

@@ -24,9 +24,16 @@ const Activities = ({ activities , token }) => {
               <b>Description: </b>
               {description}
             </p>
-         
-           
-         
+            {token ? (
+            <>
+            <Button>
+          <Link 
+            style={{ textDecoration: 'none' }} to="/activities/edit/:activityId">
+              Edit Activity
+          </Link>
+        </Button>
+        </>
+            ): null }
 </Paper>
         );
       })}
