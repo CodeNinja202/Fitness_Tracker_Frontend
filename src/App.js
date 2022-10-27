@@ -12,45 +12,21 @@ import {
   CreateRoutine,
   CreateActivity,
   EditRoutine,
+  EditActivity,
 } from "./components";
-import { getRoutines, getActivities, getUserDetails } from "./api";
+import { getRoutines, getActivities, getUserDetails, getUsersRoutines } from "./api";
+
 
 const App = () => {
   const [routines, setRoutines] = useState([]);
   const [activities, setActivies] = useState([]);
-  // const [routinesByUser, setUserRoutines] = useState([]);
+  const [routinesByUser, setUserRoutines] = useState([]);
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
-
+  console.log("TESTING USER AT Beginning ", user)
   ///////////////////////TEST
-console.log("WHO is you",user)
-  const navigate = useNavigate();
-  function logout() {
-    window.localStorage.removeItem("token");
-    setToken("");
-    setUser({});
-  }
 
-  function logout() {
-    window.localStorage.removeItem("token");
-    setToken("");
-    setUser({});
-  }
 
-  async function fetchActivities() {
-    const results = await getActivities();
-    setActivies(results);
-  }
- 
-
-  async function fetchRoutines() {
-    const results = await getRoutines();
-    setRoutines(results);
-  }
-  // async function fetchUserRoutines() {
-  //   const results = await getUsersRoutines();
-  //   setUserRoutines(results);
-  // }
   async function getMe() {
     const storedToken = window.localStorage.getItem('token');
 
@@ -65,13 +41,43 @@ console.log("WHO is you",user)
     const results = await getUserDetails(token);
     if (results.username) {
        
-      setUser(results.data);
-      console.log("Users Logged in", results.data)
+      setUser(results);
+      console.log("Users Logged in", results)
     } else {
         console.log("User Not logged IN")
       console.log("CAN NOT GET USERS DETAILS");
     }
   }
+
+
+console.log("WHO are you",user)
+  const navigate = useNavigate();
+  function logout() {
+    window.localStorage.removeItem("token");
+    setToken("");
+    setUser({});
+  }
+
+  async function fetchUserRoutines(user) {
+    
+    console.log("fetchUserRoutines BEFORE getUsersRoutines TEST", user)
+    const results = await getUsersRoutines(user);
+  
+    setUserRoutines(results.username)
+  }
+
+  async function fetchActivities() {
+    const results = await getActivities();
+    setActivies(results);
+  }
+ 
+
+  async function fetchRoutines() {
+    const results = await getRoutines();
+    setRoutines(results);
+  }
+
+  
  
   useEffect(() => {
     fetchActivities()
@@ -80,9 +86,9 @@ console.log("WHO is you",user)
   useEffect(() => {
     fetchRoutines()
   }, [token])
-  // useEffect(() => {
-  //   fetchUserRoutines()
-  // }, [token])
+  useEffect(() => {
+    fetchUserRoutines()
+  }, [])
   useEffect(() => {
     getMe();
   },[token])
@@ -110,10 +116,11 @@ console.log("WHO is you",user)
           element={<CreateActivity token={token}
           navigate={navigate} fetchActivities={fetchActivities} />}
         />
+        <Route path="/activities/edit/:activityId" element={<EditActivity activities={activities} token={token} fetchActivities={fetchActivities}  />} />
         <Route path="/routines" element={<Routines routines={routines}  token={token}/>} />
         <Route path="/routines/create_routine" element={<CreateRoutine token={token} fetchRoutines={fetchRoutines}  navigate={navigate} />} />
         <Route
-              exact
+             
               path="/routines/edit-routine/:routineId"
               element={
                 <EditRoutine
@@ -125,7 +132,7 @@ console.log("WHO is you",user)
               }
             />
        
-        <Route path="/my_routines" element={<MyRoutines  />}  />
+        <Route path="/my_routines" element={<MyRoutines routinesByUser={routinesByUser}  fetchUserRoutines={fetchUserRoutines} />}  />
       </Routes>
     </div>
   );

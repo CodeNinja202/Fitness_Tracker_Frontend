@@ -8,12 +8,13 @@ const Routines = ({ routines, token }) => {
     <div className="main-div-routines">
      
       {routines.map((routine) => {
-        const { creatorName, name, goal, id, activities, isPublic } = routine;
+        const { creatorName, name, goal, id, activities, creatorId } = routine;
       
         return (
 
           
           <Paper key={id}>
+     
             <p>
               <b>Created by:</b> {creatorName}
             </p>
@@ -27,14 +28,7 @@ const Routines = ({ routines, token }) => {
               <b>Activities:</b>
 
             </p>
-            { token ? (
-      <Link style={{ textDecoration: 'none' }} to="/routines/edit-routine/:routineId"> Edit Routine</Link>
-     ) :(
-      <button>View</button>
-     )
-     
-     
-     }
+      
             {activities.map((activity) => {
               const { description, duration, count, id,  } = activity;
               return (

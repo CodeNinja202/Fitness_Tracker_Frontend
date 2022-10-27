@@ -1,12 +1,12 @@
 import { React, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Paper, TextField, Button, Link } from "@mui/material";
+import { Paper, TextField, Button} from "@mui/material";
 import { updateRoutine, deleteRoutine } from "../api";
-const EditRoutine = ({token, routines, fetchRoutines, navigate}) => {
+const EditRoutine = ({ token, routinesByUser, fetchUserRoutines}) => {
     const { routineId } = useParams();
 
-     const [currentRoutine] = routines.filter((routine) => routine.id === routineId );
-  console.log("testing routineID", routineId)
+     const [currentRoutine] = routinesByUser.filter(routine => routine.id === routineId *1);
+  console.log("testing currentRoutine", currentRoutine)
      const { name, goal, isPublic } = currentRoutine;
   
      const [newName, setNewName] = useState(name);
@@ -22,25 +22,26 @@ const EditRoutine = ({token, routines, fetchRoutines, navigate}) => {
         
       };
   
-      await updateRoutine(updatedRoutine, routineId);
-       fetchRoutines();
-       navigate("/routines");
+      const response = await updateRoutine(token, updatedRoutine)
      }
   
     return (
-      // This needs to be a form that accepts the 5 request parameters for creating a post
+
       <Paper elevation={5}>
+
+        editRoutine
         <h1>Edit</h1>
         <form
           class="form"
           onSubmit={(event) => {
             event.preventDefault();
              editRoutine();
-  
+             fetchUserRoutines();
+             navigate('/my_routines')
             window.location - "/routines";
           }}
         >
-          <div className="loginTemplate">
+         
           
             <h1>Edit Routines</h1>
             <TextField
@@ -61,18 +62,7 @@ const EditRoutine = ({token, routines, fetchRoutines, navigate}) => {
               onChange={(event) => setisPublic(event.target.value)}
             />
   
-            <Button
-              style={{
-               
-                background: "black",
-               
-                borderColor: "black",
-              }}
-              type="submit"
-              variant="outlined"
-            >
-              Edit Post
-            </Button>
+          
             <Button
               style={{
               
@@ -89,7 +79,7 @@ const EditRoutine = ({token, routines, fetchRoutines, navigate}) => {
             >
               Delete
             </Button>
-          </div>
+          
         </form>
       </Paper>
     );

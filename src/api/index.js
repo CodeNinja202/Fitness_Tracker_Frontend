@@ -70,6 +70,7 @@ export const loginUser = async (username, password) => {
 };
 
 
+
 export const getUserDetails = async (token) => {
   console.log("TESTING TOKEN", token)
   try {
@@ -82,11 +83,31 @@ export const getUserDetails = async (token) => {
     })
     
     const result = await response.json();
-    console.log("TESTING GET USER", result)
+    //console.log("TESTING GET USER", result)
     return result;
     
   } catch(ex) {
     console.log('error getting users details')
+  }
+}
+
+console.log('TESTING API GET USER BEFORE GET USERS')
+export const getUsersRoutines = async (username) => {
+
+  try {
+    console.log(`testing username ${username}`)
+    const response = await fetch(`${baseURL}/users/${username}/routines`, {
+      headers: {
+        'Content-Type': 'application/json',
+        
+      },
+    
+    })
+    const result = await response.json();
+    console.log("getUsers Routines",result)
+    return result
+  } catch (error) {
+    console.log(`error getting all routines for ${username}`)
   }
 }
 
@@ -143,54 +164,59 @@ export const createActivity = async (token, {name, description})=> {
   }
 }
 
-// export const getUsersRoutines = async() => {
-//   try {
-//     const response = await fetch(`${baseURL}/users/:username/routines`, {
-//       headers: {
-//         'Content-Type': 'application/json',
-       
-        
-        
-        
-//       }
-//     });
-//     const results = await response.json();
-    
-//     return results;
-//   } catch(error) {
-//     console.log('error getting all users routines')
-//   }
-// }
 
 
 
-export const updateRoutine = async ({name, goal, isPublic}, routineId)=> {
+export const updateActivity = async ({ name, description,id }, token) => {
   try {
-    const response = await fetch(`${baseURL}/routines/:${routineId}`, {
+    const response = await fetch(`${baseURL}/activities/${id}`, {
       method: "PATCH",
-      
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
-       
-          name,
-         goal,
-         isPublic
-        
-     
+
+        name,
+        description
+
       })
     })
+    const results = await response.json();
+    console.log(results)
+    return (results)
 
-    
-    
+  } catch (ex) {
+    console.log('error updating activity')
+  }
+}
+
+
+export const updateRoutine = async(token, {name, goal, isPublic}, routineId) => {
+  console.log('beginning update')
+  try {
+    const response = await fetch(`${baseURL}/routines/${routineId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        name,
+        goal,
+        isPublic
+      })
+    })
     const result = await response.json();
-    return result;
-  } catch(error) {
-    console.log('error updating new routine')
+    return result
+  } catch (error) {
+    console.log(`error updating routine ${name}`)
   }
 }
 
 export const deleteRoutine = async (token, routineId) => {
   try {
-    const response = await fetch(`${baseURL}/routines/:${routineId}`, {
+    const response = await fetch(`${baseURL}/routines/${routineId}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
