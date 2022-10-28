@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
+import Search from "./Search";
 
-
-const MyRoutines = ({routinesByUser, token} ) => {
+const MyRoutines = ({activities,routinesByUser, setSearchResults,fetchActivities} ) => {
 
     return (
       <div className="main-div-routinesByUser">
@@ -11,7 +11,7 @@ const MyRoutines = ({routinesByUser, token} ) => {
         
         <Link style={{ textDecoration: 'none' }} to="/routines/create_routine"><Button> Create A Routine</Button></Link>
         {routinesByUser?.map((userRoutine) => {
-          const { creatorName, name, goal, id, activities} = userRoutine;
+          const { creatorName, name, goal, id,activities: routinesActivities} = userRoutine;
     
           return (
   
@@ -26,16 +26,16 @@ const MyRoutines = ({routinesByUser, token} ) => {
               <p>
                 <b>Goal:</b> {goal}
               </p>
-              <p>
+              
              
               <Link style={{ textDecoration: 'none' }} to={`/routines/edit-routine/${id}`}><Button> Edit Routine</Button></Link>
            
-            
+                 <Search activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>
                 <b>Activities:</b>
   
-              </p>
+             
               
-              {activities.map((activity) => {
+              {routinesActivities.map((activity) => {
                 const { description, duration, count, id } = activity;
                 return (
                   <div key={id}>
