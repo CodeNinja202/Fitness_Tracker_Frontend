@@ -60,8 +60,8 @@ const App = () => {
     setUser({});
   }
 
-  async function fetchUserRoutines(user) {
-    const results = await getUsersRoutines(user);
+  async function fetchUserRoutines() {
+    const results = await getUsersRoutines(user.username);
     setUserRoutines(results) // removed .username
     console.log('new state', routinesByUser);
   }
@@ -88,7 +88,7 @@ const App = () => {
   }, [token])
   useEffect(() => {
     if('username' in user){
-      fetchUserRoutines(user.username)
+      fetchUserRoutines()
     }
   }, [user]) // --- changed to user
   useEffect(() => {
@@ -118,7 +118,7 @@ const App = () => {
           element={<CreateActivity token={token}
           navigate={navigate} fetchActivities={fetchActivities} />}
         />
-        <Route path="/activities/edit/:activityId" element={<EditActivity activities={activities} token={token} fetchActivities={fetchActivities}  />} />
+        <Route path="/activities/edit/:activityId" element={<EditActivity activities={activities} token={token} fetchActivities={fetchActivities} navigate={navigate} />} />
         <Route path="/routines" element={<Routines routines={routines}  token={token}/>} />
         <Route path="/routines/create_routine" element={<CreateRoutine token={token} fetchRoutines={fetchRoutines}  navigate={navigate} />} />
         <Route
@@ -126,9 +126,9 @@ const App = () => {
               path="/routines/edit-routine/:routineId"
               element={
                 <EditRoutine
-                 routines={routines}
+                 routinesByUser={routinesByUser}
                  token={token}
-                  fetchRoutines={fetchRoutines}
+                 fetchUserRoutines={fetchUserRoutines}
                   navigate={navigate}
                 />
               }

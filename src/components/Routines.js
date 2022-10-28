@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper } from "@mui/material";
-import { Link } from "react-router-dom";
-const Routines = ({ routines, token }) => {
+
+const Routines = ({ routines}) => {
   return (
 
     
