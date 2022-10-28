@@ -12,17 +12,18 @@ const Activities = ({ activities , token }) => {
       {activities.map((activity) => {
         
         const { description, name, id } = activity;
+       
         return (
          
-          <Paper key={id}>
+          <Paper key={activity.id}>
             
             <p>
               <b>Activities: </b>
-              {name}
+              {activity.name}
             </p>
             <p>
               <b>Description: </b>
-              {description}
+              {activity.description}
             </p>
             {token ? (
             <>

@@ -13,16 +13,16 @@ const Routines = ({ routines}) => {
         return (
 
           
-          <Paper key={id}>
+          <Paper key={routine.id}>
      
             <p>
-              <b>Created by:</b> {creatorName}
+              <b>Created by:</b> {routine.creatorName}
             </p>
             <p>
-              <b>Workout routine:</b> {name}
+              <b>Workout routine:</b> {routine.name}
             </p>
             <p>
-              <b>Goal:</b> {goal}
+              <b>Goal:</b> {routine.goal}
             </p>
             <p>
               <b>Activities:</b>
@@ -32,18 +32,18 @@ const Routines = ({ routines}) => {
             {activities.map((activity) => {
               const { description, duration, count, id,  } = activity;
               return (
-                <div key={id}>
+                <div key={activity.id}>
                   <p>
                     <b>Description: </b>
-                    {description}
+                    {activity.description}
                   </p>
                   <p>
                     <b>Duration: </b>
-                    {duration}
+                    {activity.duration}
                   </p>
                   <p>
                     <b>Count: </b>
-                    {count}
+                    {activity.count}
                   </p>
      
       
