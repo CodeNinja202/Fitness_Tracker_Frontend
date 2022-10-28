@@ -13,16 +13,19 @@ import {
   CreateActivity,
   EditRoutine,
   EditActivity,
+  Search,
 } from "./components";
 import { getRoutines, getActivities, getUserDetails, getUsersRoutines } from "./api";
 
 
 const App = () => {
+  const [searchResults, setSearchResults] = useState({ info: {}, records: [] });
   const [routines, setRoutines] = useState([]);
   const [activities, setActivies] = useState([]);
   const [routinesByUser, setUserRoutines] = useState([]);
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   //console.log("TESTING USER AT Beginning ", user)
   //console.log("TESTING TOKEN AT Beginning ", token)
  
@@ -134,7 +137,17 @@ const App = () => {
               }
             />
        
-        <Route path="/my_routines" element={<MyRoutines routinesByUser={routinesByUser}  fetchUserRoutines={fetchUserRoutines} />}  />
+        <Route path="/my_routines"  element={<MyRoutines activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults} routinesByUser={routinesByUser}  fetchUserRoutines={fetchUserRoutines} />}  />
+        <Route
+          path="/activities"
+          element={<Activites activities={activities} token={token}
+          navigate={navigate}  />}
+        />
+        <Route
+        path="/search"
+        element={ <Search activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>}
+      />
+     
       </Routes>
     </div>
   );
