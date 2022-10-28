@@ -3,7 +3,7 @@ import { createActivity } from '../api';
 import {  TextField, Button, } from "@mui/material";
 
 
-const CreateActivity = ({token, navigate, fetchActivities}) => {
+const CreateActivity = ({token, navigate, fetchActivities, activities}) => {
   const [name, setName] = useState("");
   const [description , setDescription ] = useState("");
 
@@ -11,13 +11,17 @@ const CreateActivity = ({token, navigate, fetchActivities}) => {
     name,
     description ,
   };
-
+  
   async function addActivity() {
+    console.log("testing before addActivity result")
     const result = await createActivity(token, newActivity);
+    console.log("testing after addActivity result",result)
     fetchActivities();
+    
+    console.log("TESTING results", result)
     navigate(`/activities`);
   }
-
+ 
   return (
     <form
       onSubmit={(event) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
 
-<Link style={{ textDecoration: 'none' }} to="/routines/create_routine"><Button> Create A Routine</Button></Link>
+
 const MyRoutines = ({routinesByUser, token} ) => {
 
     return (
@@ -27,6 +27,10 @@ const MyRoutines = ({routinesByUser, token} ) => {
                 <b>Goal:</b> {goal}
               </p>
               <p>
+             
+              <Link style={{ textDecoration: 'none' }} to={`/routines/edit-routine/${id}`}><Button> Edit Routine</Button></Link>
+           
+            
                 <b>Activities:</b>
   
               </p>
