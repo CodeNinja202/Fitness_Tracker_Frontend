@@ -167,13 +167,13 @@ export const createActivity = async (token, {name, description})=> {
 
 
 
-export const updateActivity = async ({ name, description,id }, token) => {
+export const updateActivity = async ({ name, description}) => {
   try {
     const response = await fetch(`${baseURL}/activities/${id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        
       },
       body: JSON.stringify({
 
@@ -192,6 +192,8 @@ export const updateActivity = async ({ name, description,id }, token) => {
 }
 
 
+
+console.log('Before beginning update API')
 export const updateRoutine = async(token, {name, goal, isPublic}, routineId) => {
   console.log('beginning update')
   try {
@@ -208,6 +210,7 @@ export const updateRoutine = async(token, {name, goal, isPublic}, routineId) => 
       })
     })
     const result = await response.json();
+    console.log("TESTING API RESULT", result)
     return result
   } catch (error) {
     console.log(`error updating routine ${name}`)

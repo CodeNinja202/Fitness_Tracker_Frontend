@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import { updateActivity } from '../api';
 
 const EditActivity = ({ activities, fetchActivities, navigate, token}) => {
-  const { creatorId } = useParams();
- {
-    const currentActivity = activities.filter((activity) => activity.id === creatorId);
+  
+  const { activityID} = useParams();
+if(activities.length) {
+    const currentActivity = activities?.filter((activity) => activity.id === activityID*1);
 
-    console.log(activities)
+  //  console.log("TESTING ACTIVITIES",activities)
     const  {name, description}  = currentActivity;
-console.log("Current Actitivity", currentActivity)
+//console.log("Current Actitivity", currentActivity)
     const [newName, setNewName] = useState(name);
     const [newDescription, setNewDescription] = useState(description);
 
@@ -18,9 +19,9 @@ console.log("Current Actitivity", currentActivity)
       const updatedActivity = {
         name: newName,
         description: newDescription,
-        id: creatorId
+        id: activityID
       }
-      console.log("something",token)
+      ////console.log("something",token)
       await updateActivity(updatedActivity,token)
       navigate('/activities')
       fetchActivities()
@@ -58,7 +59,7 @@ console.log("Current Actitivity", currentActivity)
       </div>
     )
   }
-  return <h1>Activities Loading</h1>
+  
 }
 
 export default EditActivity;
