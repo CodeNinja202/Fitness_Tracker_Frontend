@@ -16,13 +16,15 @@ const CreateRoutine = ({token, navigate, fetchRoutines}) => {
   async function addRoutine() {
     const result = await createRoutine(token, newRoutine);
     console.log("TESTING ROUTINE", result)
-   await fetchRoutines();
-    navigate(`/routines`);
+   fetchRoutines();
+    navigate(`/my_routines`);
+    location.reload();
   }
 
   return (
     <form
-      onSubmit={(event) => {
+    id="create-routine"
+      onSubmit={ async (event) => {
         event.preventDefault();
        
       }}

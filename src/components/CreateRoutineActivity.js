@@ -21,9 +21,10 @@ const CreateRoutineActivity = ({ activities,fetchActivities, token, routineId}) 
  
   return (
     <form
-      id="search"
+      id="create-routine-activity"
       onSubmit={async (event) => {
         event.preventDefault()
+        
       await createRoutineActivity({
             token,
             count,
@@ -31,7 +32,7 @@ const CreateRoutineActivity = ({ activities,fetchActivities, token, routineId}) 
             routineId,
             activityId: activity
         })
-       
+       location.reload();
       }}
     >
       
@@ -61,7 +62,7 @@ const CreateRoutineActivity = ({ activities,fetchActivities, token, routineId}) 
           }
         </select>
         <TextField 
-        type="text" 
+        type="number"
         placeholder="Count*" 
         value={count}
          onChange={(event) => setCount(event.target.value)} 
@@ -69,7 +70,7 @@ const CreateRoutineActivity = ({ activities,fetchActivities, token, routineId}) 
         
         
         <TextField 
-        type="text" 
+        type="number"
         placeholder="Duration*" 
         value={duration }
         onChange={(event) => setDuration (event.target.value)}

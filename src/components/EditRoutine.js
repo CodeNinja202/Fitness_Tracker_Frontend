@@ -54,12 +54,12 @@ const EditRoutine = ({
         <h1>Edit Routines</h1>
         <TextField
           type="text"
-          placeholder={name}
+          value={newName}
           onChange={(event) => setNewName(event.target.value)}
         />
         <TextField
           type="text"
-          placeholder={goal}
+          value={newGoal}
           onChange={(event) => setNewGoal(event.target.value)}
         />
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
 import CreateRoutineActivity from "./CreateRoutineActivity";
 
-const MyRoutines = ({navigate,fetchUserRoutines, activities,routinesByUser, setSearchResults,fetchActivities, token} ) => {
+const MyRoutines = ({ activities,routinesByUser, setSearchResults,fetchActivities, token} ) => {
 
     return (
       <div className="main-div-routinesByUser">

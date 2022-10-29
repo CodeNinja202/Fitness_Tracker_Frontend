@@ -26,7 +26,7 @@ const App = () => {
   const [routinesByUser, setUserRoutines] = useState([]);
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+ 
   //console.log("TESTING USER AT Beginning ", user)
   //console.log("TESTING TOKEN AT Beginning ", token)
  
@@ -89,7 +89,8 @@ const App = () => {
 
   useEffect(() => {
     fetchRoutines()
-  }, [token])
+  }, [token, routines ])
+
   useEffect(() => {
     if('username' in user){
       fetchUserRoutines()
@@ -138,7 +139,7 @@ const App = () => {
               }
             />
        
-        <Route path="/my_routines" element={<MyRoutines token={token} activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults} routinesByUser={routinesByUser}  fetchUserRoutines={fetchUserRoutines} />}  />
+        <Route path="/my_routines" element={<MyRoutines token={token}  activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults} routinesByUser={routinesByUser}  fetchUserRoutines={fetchUserRoutines} user={user} />}  />
         <Route
           path="/activities"
           element={<Activites activities={activities} token={token}
