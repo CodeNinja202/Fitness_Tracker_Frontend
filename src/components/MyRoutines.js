@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
-import Search from "./Search";
+import CreateRoutineActivity from "./CreateRoutineActivity";
 
-const MyRoutines = ({activities,routinesByUser, setSearchResults,fetchActivities} ) => {
+const MyRoutines = ({navigate,fetchUserRoutines, activities,routinesByUser, setSearchResults,fetchActivities, token} ) => {
 
     return (
       <div className="main-div-routinesByUser">
@@ -11,12 +11,12 @@ const MyRoutines = ({activities,routinesByUser, setSearchResults,fetchActivities
         
         <Link style={{ textDecoration: 'none' }} to="/routines/create_routine"><Button> Create A Routine</Button></Link>
         {routinesByUser?.map((userRoutine) => {
-          const { creatorName, name, goal, id,activities: routinesActivities} = userRoutine;
+          const { creatorName, name, goal, id:routineId, activities: routinesActivities} = userRoutine;
     
           return (
   
             
-            <Paper key={id}>
+            <Paper key={routineId}>
               <p>
                 <b>Created by:</b> {creatorName}
               </p>
@@ -28,15 +28,15 @@ const MyRoutines = ({activities,routinesByUser, setSearchResults,fetchActivities
               </p>
               
              
-              <Link style={{ textDecoration: 'none' }} to={`/routines/edit-routine/${id}`}><Button> Edit Routine</Button></Link>
-           
-                 <Search activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>
-                <b>Activities:</b>
-  
+              <Link style={{ textDecoration: 'none' }} to={`/routines/edit-routine/${routineId}`}><Button> Edit Routine</Button></Link><br></br>
+              <b>Choose Activities:</b>
+                 <CreateRoutineActivity token={token} activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults} routineId={routineId}/>
+              
+              
              
               
               {routinesActivities.map((activity) => {
-                const { description, duration, count, id } = activity;
+                const { routineActivityId, description, duration, count, id } = activity;
                 return (
                   <div key={id}>
                     <p>
@@ -51,7 +51,8 @@ const MyRoutines = ({activities,routinesByUser, setSearchResults,fetchActivities
                       <b>Count: </b>
                       {count}
                     </p>
-  
+                    <Link style={{ textDecoration: 'none' }} to={`/routine_activities/${routineActivityId}/${routineId}`}><Button> Edit Routine Activity</Button></Link><br></br>
+              <b>Edit Routine Activity</b>
                   
                   </div>
                 );

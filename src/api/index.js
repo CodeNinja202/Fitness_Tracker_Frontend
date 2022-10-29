@@ -233,3 +233,87 @@ export const deleteRoutine = async (token, routineId) => {
     console.log('error deleting routine')
   }
 }
+
+
+
+
+// export const getRoutineActivity = async (activityId) => {
+//   try {
+//     const response = await fetch(`${baseURL}/activities/${activityId}/routines`, {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     const results = await response.json();
+//     return results;
+//   } catch (error) {
+//     console.log("error getting all routine activity");
+//   }
+// };
+
+
+export const createRoutineActivity= async ({token, activityId, count, duration, routineId} )=> {
+  try {
+    const response = await fetch(`${baseURL}/routines/${routineId}/activities`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+       activityId,
+        count,
+        duration
+     
+      })
+    })
+    
+    const result = await response.json();
+    return result;
+  } catch(ex) {
+    console.log('error creating a new routine activity')
+  }
+}
+
+
+export const updateRoutineActivity = async(token, {count, duration}, routineActivityId) => {
+  console.log('beginning update')
+  try {
+    const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        
+        count,
+        duration
+      })
+    })
+    const result = await response.json();
+    console.log("TESTING API RESULT", result)
+    return result
+  } catch (error) {
+    console.log(`error updating routine activity `)
+  }
+}
+
+export const deleteRoutineActivity = async (token, routineActivityId) => {
+  try {
+    const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const results = await response.json();
+    console.log(results)
+    return (results)
+  } catch (ex) {
+    console.log('error deleting routine activity')
+  }
+}
+
+
