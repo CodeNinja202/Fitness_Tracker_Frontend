@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-
-const Search = ({ activities,fetchActivities, setSearchResults , setIsLoading}) => {
-  
+import {  TextField, Button, } from "@mui/material";
+import {createRoutineActivity} from '../api';
+const Search = ({ activities,fetchActivities, token, routineId}) => {
+    const [count, setCount] = useState("");
+    const [duration , setDuration ] = useState("");
   
   const [activitiesList, setActivitiesList] = useState([]);
  
@@ -22,17 +24,14 @@ const Search = ({ activities,fetchActivities, setSearchResults , setIsLoading}) 
       id="search"
       onSubmit={async (event) => {
         event.preventDefault()
-    setIsLoading(true)
-        try {
-          const results = await fetchActivities({
-            activity,
-          });
-          setSearchResults(results);
-        } catch (error) {
-          console.error();
-        } finally {
-          setIsLoading(false);
-        }
+      await createRoutineActivity({
+            token,
+            count,
+            duration,
+            routineId,
+            activityId: activity
+        })
+       
       }}
     >
       
@@ -61,8 +60,24 @@ const Search = ({ activities,fetchActivities, setSearchResults , setIsLoading}) 
 
           }
         </select>
+        <TextField 
+        type="text" 
+        placeholder="Count*" 
+        value={count}
+         onChange={(event) => setCount(event.target.value)} 
+         />
+        
+        
+        <TextField 
+        type="text" 
+        placeholder="Duration*" 
+        value={duration }
+        onChange={(event) => setDuration (event.target.value)}
+        />
+        
       </fieldset>
-     {/* // <button>Duration & Count</button> */}
+      <button type="submit">Add Activity to Routine</button> 
+    
     </form>
   );
 };

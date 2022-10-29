@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
 import Search from "./Search";
 
-const MyRoutines = ({activities,routinesByUser, setSearchResults,fetchActivities} ) => {
+const MyRoutines = ({activities,routinesByUser, setSearchResults,fetchActivities, token} ) => {
 
     return (
       <div className="main-div-routinesByUser">
@@ -28,10 +28,10 @@ const MyRoutines = ({activities,routinesByUser, setSearchResults,fetchActivities
               </p>
               
              
-              <Link style={{ textDecoration: 'none' }} to={`/routines/edit-routine/${id}`}><Button> Edit Routine</Button></Link>
-           
-                 <Search activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>
-                <b>Activities:</b>
+              <Link style={{ textDecoration: 'none' }} to={`/routines/edit-routine/${id}`}><Button> Edit Routine</Button></Link><br></br>
+              <b>Choose An Activities:</b>
+                 <Search token={token} activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults} routineId={id}/>
+                
   
              
               

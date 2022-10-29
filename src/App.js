@@ -14,6 +14,7 @@ import {
   EditRoutine,
   EditActivity,
   Search,
+  CreateRoutineActivity
 } from "./components";
 import { getRoutines, getActivities, getUserDetails, getUsersRoutines } from "./api";
 
@@ -137,7 +138,7 @@ const App = () => {
               }
             />
        
-        <Route path="/my_routines"  element={<MyRoutines activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults} routinesByUser={routinesByUser}  fetchUserRoutines={fetchUserRoutines} />}  />
+        <Route path="/my_routines" element={<MyRoutines token={token} activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults} routinesByUser={routinesByUser}  fetchUserRoutines={fetchUserRoutines} />}  />
         <Route
           path="/activities"
           element={<Activites activities={activities} token={token}
@@ -147,6 +148,11 @@ const App = () => {
         path="/search"
         element={ <Search activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>}
       />
+      <Route
+          path="/routines/:routineId/activities"
+          element={<CreateRoutineActivity token={token}
+          activities={activities} fetchActivities={fetchActivities} />}
+        />
      
       </Routes>
     </div>

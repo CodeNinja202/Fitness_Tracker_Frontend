@@ -11,3 +11,4 @@ export { default as EditRoutine} from "./EditRoutine";
 export { default as EditActivity} from "./EditActivity";
 export { default as Search } from './Search';
 export { default as Loading } from './Loading';
+export { default as CreateRoutineActivity} from './CreateRoutineActivity'
