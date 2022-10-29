@@ -13,7 +13,7 @@ import {
   CreateActivity,
   EditRoutine,
   EditActivity,
-  Search,
+  EditRoutineActivity,
   CreateRoutineActivity
 } from "./components";
 import { getRoutines, getActivities, getUserDetails, getUsersRoutines } from "./api";
@@ -67,7 +67,7 @@ const App = () => {
   async function fetchUserRoutines() {
     const results = await getUsersRoutines(user.username);
     setUserRoutines(results) // removed .username
-    console.log('new state', routinesByUser);
+    console.log('new state', results);
   }
 
   async function fetchActivities() {
@@ -145,15 +145,15 @@ const App = () => {
           navigate={navigate}  />}
         />
         <Route
-        path="/search"
-        element={ <Search activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>}
+        path="/routines/:routineId/activities"
+        element={ <CreateRoutineActivity activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>}
       />
-      <Route
-          path="/routines/:routineId/activities"
-          element={<CreateRoutineActivity token={token}
-          activities={activities} fetchActivities={fetchActivities} />}
-        />
      
+     <Route
+          path="/routine_activities/:routineActivityId/:routineId"
+          element={<EditRoutineActivity token={token} fetchUserRoutines={fetchUserRoutines} routinesByUser={routinesByUser} 
+          navigate={navigate}  />}
+        />
       </Routes>
     </div>
   );

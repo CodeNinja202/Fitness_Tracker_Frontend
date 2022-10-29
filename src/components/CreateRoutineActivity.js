@@ -1,33 +1,65 @@
-import React, { useState } from "react";
-import { createRoutineActivity } from '../api';
+import React, { useEffect, useState } from "react";
 import {  TextField, Button, } from "@mui/material";
-
-const CreateRoutineActivity = (token,fetc) => {
+import {createRoutineActivity} from '../api';
+const CreateRoutineActivity = ({ activities,fetchActivities, token, routineId}) => {
     const [count, setCount] = useState("");
     const [duration , setDuration ] = useState("");
   
-    const newRoutineActivity = {
-      count,
-      duration 
-    };
-    
-    async function addRoutineActivity() {
+  const [activitiesList, setActivitiesList] = useState([]);
+ 
+  const [activity, setActivity] = useState("any")
+  
+  
+  useEffect(() => {
+    Promise.all([fetchActivities()])
+      .then(([activities]) => {
+        setActivitiesList(activities);
+      })
+      .catch(console.error);
+  }, []);
+ 
+ 
+  return (
+    <form
+      id="search"
+      onSubmit={async (event) => {
+        event.preventDefault()
+      await createRoutineActivity({
+            token,
+            count,
+            duration,
+            routineId,
+            activityId: activity
+        })
+       
+      }}
+    >
       
-      const result = await createRoutineActivity(token, newRoutineActivity);
-     
       
-      
-      console.log("TESTING results", result)
-      navigate(`/activities`);
-    }
-   
-    return (
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          addRoutineActivity();
-        }}
-      >
+      <fieldset>
+        <label htmlFor="select-activity">
+          Activites <span className="activity-count">({activities.length})</span>
+        </label>
+        <select
+          name="activity"
+          id="select-activity"
+          value={activity}
+          onChange={(event) => setActivity(event.target.value)}
+        >
+          <option value="any">Any</option>
+          {
+          
+          activities.map((activity, idx) => {
+              return (
+                <option key={`${idx}:${activity.name}`} value={activity.id}>
+                  {activity.name}
+                </option>
+              );
+             
+            })
+
+          }
+        </select>
         <TextField 
         type="text" 
         placeholder="Count*" 
@@ -42,11 +74,12 @@ const CreateRoutineActivity = (token,fetc) => {
         value={duration }
         onChange={(event) => setDuration (event.target.value)}
         />
-  
-        <Button onClick={() => addActivity()}>Create New Activity</Button>
-      </form>
-    );
-  };
-
+        
+      </fieldset>
+      <button type="submit">Add Activity to Routine</button> 
+    
+    </form>
+  );
+};
 
 export default CreateRoutineActivity;

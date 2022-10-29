@@ -235,6 +235,23 @@ export const deleteRoutine = async (token, routineId) => {
 }
 
 
+
+
+// export const getRoutineActivity = async (activityId) => {
+//   try {
+//     const response = await fetch(`${baseURL}/activities/${activityId}/routines`, {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     const results = await response.json();
+//     return results;
+//   } catch (error) {
+//     console.log("error getting all routine activity");
+//   }
+// };
+
+
 export const createRoutineActivity= async ({token, activityId, count, duration, routineId} )=> {
   try {
     const response = await fetch(`${baseURL}/routines/${routineId}/activities`, {
@@ -257,3 +274,46 @@ export const createRoutineActivity= async ({token, activityId, count, duration, 
     console.log('error creating a new routine activity')
   }
 }
+
+
+export const updateRoutineActivity = async(token, {count, duration}, routineActivityId) => {
+  console.log('beginning update')
+  try {
+    const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        
+        count,
+        duration
+      })
+    })
+    const result = await response.json();
+    console.log("TESTING API RESULT", result)
+    return result
+  } catch (error) {
+    console.log(`error updating routine activity `)
+  }
+}
+
+export const deleteRoutineActivity = async (token, routineActivityId) => {
+  try {
+    const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const results = await response.json();
+    console.log(results)
+    return (results)
+  } catch (ex) {
+    console.log('error deleting routine activity')
+  }
+}
+
+

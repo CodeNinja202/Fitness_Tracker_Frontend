@@ -1,32 +1,50 @@
 import React, { useState } from "react";
 import { createActivity } from '../api';
-import {  TextField, Button, } from "@mui/material";
+import {  TextField, Button, Popover, Typography} from "@mui/material";
 
 
 const CreateActivity = ({token, navigate, fetchActivities, activities}) => {
   const [name, setName] = useState("");
   const [description , setDescription ] = useState("");
 
+
   const newActivity = {
     name,
     description ,
   };
   
-  async function addActivity() {
-    console.log("testing before addActivity result")
-    const result = await createActivity(token, newActivity);
-    console.log("testing after addActivity result",result)
-    fetchActivities();
-    
-    console.log("TESTING results", result)
-    navigate(`/activities`);
-  }
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [error, setError] = useState('')
+
+  const handleClick = async (event) => {
+    setAnchorEl(event.currentTarget);
+    const results = await createActivity(token, newActivity);
+    console.log(results, "TEST")
+    if ("error" in results) {
+
+      setError(results.error);
+
+    } else {
+
+      setError('new!');
+      fetchActivities();
+      navigate('/activities')
+
+    }
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
  
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        addActivity();
+        
       }}
     >
       <TextField 
@@ -44,7 +62,21 @@ const CreateActivity = ({token, navigate, fetchActivities, activities}) => {
       onChange={(event) => setDescription (event.target.value)}
       />
 
-      <Button onClick={() => addActivity()}>Create New Activity</Button>
+<Button style={{ height: '3rem', margin: '.25rem' }} aria-describedby={id} variant="contained" onClick={handleClick}>
+              Create A New Activity
+            </Button>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+            >
+              <Typography sx={{ p: 2 }}>{error}</Typography>
+            </Popover>
     </form>
   );
 };
