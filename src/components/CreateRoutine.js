@@ -33,7 +33,7 @@ const CreateRoutine = ({ token, navigate, fetchRoutines }) => {
     </div>
     <div className="create-routine">
       <TextField
-      style={{ width: "100%"}}
+        style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
         type="text"
         placeholder="Name*"
         value={name}
@@ -41,7 +41,7 @@ const CreateRoutine = ({ token, navigate, fetchRoutines }) => {
       />
 
       <TextField
-      style={{ width: "100%"}}
+        style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
         type="text"
         placeholder="Goal*"
         value={goal}

@@ -12,7 +12,7 @@ const Routines = ({ routines }) => {
         const { creatorName, name, goal, id, activities, creatorId } = routine;
 
         return (
-          <Paper key={routine.id}>
+          <div key={routine.id}>
             <div className="routines-inner-div" >
             <p>
               <b>Created by:</b> {routine.creatorName}
@@ -48,7 +48,7 @@ const Routines = ({ routines }) => {
                 
               );
             })}
-          </Paper>
+          </div>
         );
       })}
     </div>

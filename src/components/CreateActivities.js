@@ -45,6 +45,7 @@ const CreateActivity = ({ token, navigate, fetchActivities, activities }) => {
     </div>
     <div className="create-activity">
       <TextField
+      style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
         type="text"
         placeholder="Name*"
         value={name}
@@ -52,6 +53,7 @@ const CreateActivity = ({ token, navigate, fetchActivities, activities }) => {
       />
 
       <TextField
+      style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
         type="text"
         placeholder="Description*"
         value={description}

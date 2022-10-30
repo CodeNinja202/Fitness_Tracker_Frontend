@@ -31,14 +31,14 @@ const Login = ({ setToken, navigate }) => {
         <img
           style={{
             borderRadius:"10%",
-            
+            width:"100%"
           }}
           src={log_reg_PIC}
         />
 
         <TextField
  type="text"
-          style={{ margin: ".25rem" }}
+ style={{ marginTop:"5%", margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
           label="Enter Username"
           onChange={(event) => setUsername(event.target.value)}
         />
@@ -46,7 +46,7 @@ const Login = ({ setToken, navigate }) => {
         <TextField
         
         type="password"
-          style={{ margin: ".25rem" }}
+        style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
           label="Enter Password"
           onChange={(event) => setPassword(event.target.value)}
         />
@@ -57,6 +57,7 @@ const Login = ({ setToken, navigate }) => {
             borderColor: "black",
             height: "3rem",
             margin: ".25rem",
+            width:"100%" ,
           }}
           variant="contained"
           type="submit"
@@ -64,20 +65,10 @@ const Login = ({ setToken, navigate }) => {
           Login
         </Button>
 
-        <Link style={{ textDecoration: "none" }} to="/register">
-          <Button
-            style={{
-              background: "red",
-              width:"12rem",
-              borderColor: "black",
-              height: "3rem",
-              margin: ".25rem",
-            }}
-            variant="contained"
-            type="submit"
-          >
-             Sign Up
-          </Button>
+        <Link style={{ textDecoration: "none", color:"red" }} to="/register">
+          
+            Don't have an account? Sign up
+          
         </Link>
       </div>
     </form>

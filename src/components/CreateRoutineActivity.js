@@ -63,7 +63,7 @@ const CreateRoutineActivity = ({
           })}
         </select>
         <TextField
-        style={{width:"100%"}}
+         style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
           type="number"
           placeholder="Count*"
           value={count}
@@ -71,7 +71,7 @@ const CreateRoutineActivity = ({
         />
 
         <TextField
-        style={{width:"100%"}}
+          style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
           type="number"
           placeholder="Duration*"
           value={duration}

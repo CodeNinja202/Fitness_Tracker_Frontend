@@ -39,7 +39,7 @@ const EditRoutine = ({
   }
 
   return (
-    <Paper elevation={5}>
+    <div elevation={5}>
         <div >
       <img src={logoIMG} style={{ width: "100%"}} />
     </div>
@@ -52,15 +52,15 @@ const EditRoutine = ({
           navigate("/my_routines");
         }}
       >
-       <div className="edit-routine">
+       <div className="edit-routine-div">
         <TextField
-        style={{ width: "100%", marginBottom:"2%"}}
+          style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
           type="text"
           value={newName}
           onChange={(event) => setNewName(event.target.value)}
         />
         <TextField
-        style={{ width: "100%", marginBottom:"2%"}}
+          style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
           type="text"
           value={newGoal}
           onChange={(event) => setNewGoal(event.target.value)}
@@ -91,7 +91,7 @@ const EditRoutine = ({
         </Button>
         </div>
       </form>
-    </Paper>
+    </div>
   );
 };
 

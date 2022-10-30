@@ -18,7 +18,7 @@ width: 100%;
 }
 
 .loginTemplate,
-.registerTemplate, .create-routine {
+.registerTemplate, .create-routine,.edit-routine-activity, .edit-routine-div {
 
 
 
@@ -27,7 +27,12 @@ width: 100%;
     margin: 1rem;
     padding-top: 2%;
     align-items: center;
-
+    padding: 3rem 2rem;
+    margin: 1% 35%;
+    border-radius: 1rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 30px 20px #cbced1,
+        -13px -13px 20px #fff;
 
 }
 
@@ -84,7 +89,7 @@ width: 100%;
    
 
 }
-.create-routine , .edit-routine, .create-activity{
+.create-routine , .edit-routine, .create-activity,.edit-routine-activity{
     display: flex;
     flex-direction: column;
     

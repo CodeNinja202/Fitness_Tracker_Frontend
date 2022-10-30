@@ -101,9 +101,11 @@ const App = () => {
   },[token])
 
   return (
-    <div className="main-niv">
+    <div className="main-div">
       <Navbar logout={logout} token={token} />
+      <div style={{backgroundColor:"#ECF0F3"}}>
       <Routes>
+        
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setToken={setToken}
                   navigate={navigate} />} />
@@ -155,7 +157,9 @@ const App = () => {
           element={<EditRoutineActivity token={token} fetchUserRoutines={fetchUserRoutines} routinesByUser={routinesByUser} 
           navigate={navigate}  />}
         />
+        
       </Routes>
+      </div>
     </div>
   );
 };

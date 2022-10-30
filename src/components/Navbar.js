@@ -17,7 +17,7 @@ const Navbar = ({ logout, token }) => {
            color: "white",
         }}>
           
-           <HomeIcon />
+           <HomeIcon /> HOME
           
         </Button>
         </Link>
@@ -26,7 +26,7 @@ const Navbar = ({ logout, token }) => {
            color: "white",
         }}>
           
-           <FitnessCenterIcon/>
+           <FitnessCenterIcon/>ACTIVITIES
             </Button>
           </Link>
           <Link style={{ textDecoration: "none" }} to="/routines">
@@ -34,7 +34,7 @@ const Navbar = ({ logout, token }) => {
            color: "white",
         }}>
           
-          <EventNoteIcon/>
+          <EventNoteIcon/>ROUTINES
             </Button>
           </Link>
         
@@ -46,7 +46,7 @@ const Navbar = ({ logout, token }) => {
            color: "white",
         }}>
               
-                <AddCircleOutlineIcon/>
+                <AddCircleOutlineIcon/>MY ROUTINES
              
             </Button>
             </Link>
@@ -57,7 +57,7 @@ const Navbar = ({ logout, token }) => {
               >
             <Button style={{ color: "white" }} >
              
-           < LogoutIcon/> 
+           < LogoutIcon/>LOGOUT
               
             </Button>
             </Link>
@@ -66,7 +66,7 @@ const Navbar = ({ logout, token }) => {
           <Link style={{ textDecoration: "none" }} to="/login">
           <Button style={{ color: "white" }}>
             
-              <LoginIcon/>
+              <LoginIcon/>LOGIN
             
           </Button>
           </Link>
