@@ -1,9 +1,12 @@
 import React from "react";
 import { Paper } from "@mui/material";
-
+import logoIMG from "./images/routine.gif";
 const Routines = ({ routines }) => {
   return (
     <form>
+         <div >
+      <img src={logoIMG} style={{ width: "100%"}} />
+    </div>
     <div className="main-div-routines">
       {routines.map((routine) => {
         const { creatorName, name, goal, id, activities, creatorId } = routine;

@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Paper } from "@mui/material";
+import { Button} from "@mui/material";
 import CreateRoutineActivity from "./CreateRoutineActivity";
 import logoIMG from "./images/my_routines.gif";
+import EditIcon from '@mui/icons-material/Edit';
 const MyRoutines = ({
   activities,
   routinesByUser,
@@ -11,16 +12,17 @@ const MyRoutines = ({
   token,
 }) => {
   return (
-    <form>
-      <div >
+    
+    
+    <div className="main-div-routinesByUser">
+        <div >
       <img src={logoIMG} style={{ width: "100%"}} />
     </div>
-    <div className="main-div-routinesByUser">
-      <h1>My Routines</h1>
-
       <Link style={{ textDecoration: "none" }} to="/routines/create_routine">
-        <Button> Create A Routine</Button>
+        <Button  variant="outlined" color="error" style={{ color: "white",background: "red", width:"100%"}}> Create A Routine</Button>
       </Link>
+
+      <div className="routine-by-div">
       {routinesByUser?.map((userRoutine) => {
         const {
           creatorName,
@@ -31,7 +33,8 @@ const MyRoutines = ({
         } = userRoutine;
 
         return (
-          <Paper key={routineId}>
+          <div key={routineId} >
+            <div className="routine-by-inner-div">
             <p>
               <b>Created by:</b> {creatorName}
             </p>
@@ -46,7 +49,7 @@ const MyRoutines = ({
               style={{ textDecoration: "none" }}
               to={`/routines/edit-routine/${routineId}`}
             >
-              <Button> Edit Routine</Button>
+              <Button> <EditIcon/>Edit</Button>
             </Link>
             <br></br>
             <b>Choose Activities:</b>
@@ -59,10 +62,15 @@ const MyRoutines = ({
             />
 
             {routinesActivities.map((activity) => {
-              const { routineActivityId, description, duration, count, id } =
+              const { routineActivityId, description, duration, count, id, name } =
                 activity;
               return (
                 <div key={id}>
+                   <p>
+                    <b>Name: </b>
+                    {name}
+                  </p>
+                  
                   <p>
                     <b>Description: </b>
                     {description}
@@ -79,18 +87,19 @@ const MyRoutines = ({
                     style={{ textDecoration: "none" }}
                     to={`/routine_activities/${routineActivityId}/${routineId}`}
                   >
-                    <Button> Edit Routine Activity</Button>
+                    <Button> <EditIcon/>Edit</Button>
                   </Link>
-                  <br></br>
-                  <b>Edit Routine Activity</b>
+               
                 </div>
               );
             })}
-          </Paper>
+            </div>
+          </div>
         );
       })}
+      </div>
     </div>
-    </form>
+    
   );
 };
 

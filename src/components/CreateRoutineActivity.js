@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, InputLabel } from "@mui/material";
 import { createRoutineActivity } from "../api";
 const CreateRoutineActivity = ({
   activities,
@@ -27,7 +27,7 @@ const CreateRoutineActivity = ({
       id="create-routine-activity"
       onSubmit={async (event) => {
         event.preventDefault();
-
+       
         await createRoutineActivity({
           token,
           count,
@@ -35,18 +35,22 @@ const CreateRoutineActivity = ({
           routineId,
           activityId: activity,
         });
-        location.reload();
+      location.reload();
       }}
     >
-      <fieldset>
+      
+      <div>
+      <div className="routine-by-inner-div">
         <label htmlFor="select-activity">
           Activites{" "}
           <span className="activity-count">({activities.length})</span>
         </label>
-        <select
+       
+        <select style={{width:"100%"}}
           name="activity"
           id="select-activity"
           value={activity}
+         
           onChange={(event) => setActivity(event.target.value)}
         >
           <option value="any">Any</option>
@@ -59,6 +63,7 @@ const CreateRoutineActivity = ({
           })}
         </select>
         <TextField
+        style={{width:"100%"}}
           type="number"
           placeholder="Count*"
           value={count}
@@ -66,13 +71,18 @@ const CreateRoutineActivity = ({
         />
 
         <TextField
+        style={{width:"100%"}}
           type="number"
           placeholder="Duration*"
           value={duration}
           onChange={(event) => setDuration(event.target.value)}
         />
-      </fieldset>
-      <button type="submit">Add Activity to Routine</button>
+         </div>
+      </div>
+      
+     
+   <Button  variant="outlined" color="error" style={{ color: "white",background: "red", width:"100%"}}type="submit">Add Activity to Routine</Button>
+   
     </form>
   );
 };

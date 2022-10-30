@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Paper, TextField, Button } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { updateRoutineActivity, deleteRoutineActivity } from "../api";
+import logoIMG from "./images/Edit_Routine_activities.jpg";
 const EditRoutineActivity = ({
   token,
   routinesByUser,
@@ -54,6 +55,9 @@ const EditRoutineActivity = ({
 
   return (
     <Paper elevation={5}>
+       <div >
+      <img src={logoIMG} style={{ width: "100%"}} />
+    </div>
       <form
         className="form"
         onSubmit={(event) => {
@@ -63,7 +67,7 @@ const EditRoutineActivity = ({
           navigate("/my_routines");
         }}
       >
-        <h1>Edit Routines Activity</h1>
+        
         <TextField
           type="number"
           value={newCount}

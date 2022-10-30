@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createActivity } from "../api";
 import { TextField, Button, Popover, Typography } from "@mui/material";
-
+import logoIMG from "./images/create_activity.jpg";
 const CreateActivity = ({ token, navigate, fetchActivities, activities }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -40,6 +40,10 @@ const CreateActivity = ({ token, navigate, fetchActivities, activities }) => {
         event.preventDefault();
       }}
     >
+      <div >
+      <img src={logoIMG} style={{ width: "100%"}} />
+    </div>
+    <div className="create-activity">
       <TextField
         type="text"
         placeholder="Name*"
@@ -55,13 +59,14 @@ const CreateActivity = ({ token, navigate, fetchActivities, activities }) => {
       />
 
       <Button
-        style={{ height: "3rem", margin: ".25rem" }}
+        variant="outlined" color="error" style={{color: "white",background: "red", width: "100%"}}
         aria-describedby={id}
-        variant="contained"
+       
         onClick={handleClick}
       >
         Create A New Activity
       </Button>
+      </div>
       <Popover
         id={id}
         open={open}
@@ -74,6 +79,7 @@ const CreateActivity = ({ token, navigate, fetchActivities, activities }) => {
       >
         <Typography sx={{ p: 2 }}>{error}</Typography>
       </Popover>
+      
     </form>
   );
 };
