@@ -15,10 +15,11 @@
     opacity: 90%;
     background-color: #d82121;
 width: 100%;
+
 }
 
 .loginTemplate,
-.registerTemplate {
+.registerTemplate, .create-routine,.edit-routine-activity, .edit-routine-div {
 
 
 
@@ -27,11 +28,16 @@ width: 100%;
     margin: 1rem;
     padding-top: 2%;
     align-items: center;
-
+    padding: 3rem 2rem;
+    margin: 1% 35%;
+    border-radius: 1rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 30px 20px #cbced1,
+        -13px -13px 20px #fff;
 
 }
 
-.activities-main-div,.main-div-routines {
+.activities-main-div,.main-div-routines{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -40,11 +46,11 @@ width: 100%;
 
 }
 
-.activities-inner-div, .routines-inner-div {
+.activities-inner-div, .routines-inner-div{
 
 
     
-    align-content: space-around;
+   
     padding: 3rem 2rem;
     margin: 10% 5%;
     border-radius: 1rem;
@@ -52,4 +58,59 @@ width: 100%;
     box-shadow: 13px 30px 20px #cbced1,
         -13px -13px 20px #fff;
 
+}
+.routine-by-div {
+    display: flex;
+    flex-direction: row;
+ 
+   justify-content:center;
+
+
+}
+
+.routine-by-inner-div{
+   
+    padding: 3rem 2rem;
+    margin: 10% 5%;
+    border-radius: 1rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 30px 20px #cbced1,
+        -13px -13px 20px #fff;
+}
+
+@media only screen and (max-width: 600px)  {
+    .routine-by-div {
+        display: flex;
+        flex-direction: row;
+     flex-wrap: wrap;
+       justify-content:center;
+    
+    
+    }
+   
+
+}
+.create-routine , .edit-routine, .create-activity,.edit-routine-activity{
+    display: flex;
+    flex-direction: column;
+    
+    padding: 3rem 2rem;
+    margin: 1% 35%;
+    border-radius: 1rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 30px 20px #cbced1,
+        -13px -13px 20px #fff;
+}
+
+
+.activity-box{
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+    margin: 2%;
+ padding: 10%;
+    border-radius: 1rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 30px 20px #cbced1,
+        -13px -13px 20px #fff;
 }

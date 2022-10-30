@@ -12,7 +12,7 @@ import {
   CreateRoutine,
   CreateActivity,
   EditRoutine,
-  EditActivity,
+  
   EditRoutineActivity,
   CreateRoutineActivity
 } from "./components";
@@ -101,9 +101,11 @@ const App = () => {
   },[token])
 
   return (
-    <div className="main-niv">
+    <div className="main-div">
       <Navbar logout={logout} token={token} />
+      <div style={{backgroundColor:"#ECF0F3"}}>
       <Routes>
+        
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setToken={setToken}
                   navigate={navigate} />} />
@@ -123,7 +125,7 @@ const App = () => {
           element={<CreateActivity token={token}
           navigate={navigate} fetchActivities={fetchActivities} />}
         />
-        <Route path="/activities/edit/:activityId" element={<EditActivity activities={activities} token={token} fetchActivities={fetchActivities} navigate={navigate} />} />
+       
         <Route path="/routines" element={<Routines routines={routines}  token={token} fetchActivities={fetchActivities}/>} />
         <Route path="/routines/create_routine" element={<CreateRoutine token={token} fetchRoutines={fetchRoutines}  navigate={navigate} />} />
         <Route
@@ -155,7 +157,9 @@ const App = () => {
           element={<EditRoutineActivity token={token} fetchUserRoutines={fetchUserRoutines} routinesByUser={routinesByUser} 
           navigate={navigate}  />}
         />
+        
       </Routes>
+      </div>
     </div>
   );
 };

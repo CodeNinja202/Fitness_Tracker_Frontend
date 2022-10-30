@@ -14,7 +14,12 @@ const Register = ({ setToken }) => {
       alert("Need UpperCase");
       return null;
     }
+    if(password.length < 8){
+      alert("Password to short")
+      return null;
+    }
     if (password !== confirmPassword) {
+      console.log("bad password")
       alert("Password Does Not Match");
       return null;
     }
@@ -40,15 +45,18 @@ const Register = ({ setToken }) => {
         handleSubmit();
       }}
     >
-        <div className="registerTemplate" >
-      <img src={log_reg_PIC } />
-      </div>
+        <div className="loginTemplate">
+      <img style={{
+            borderRadius:"10%",
+            width:"100%"
+          }} src={log_reg_PIC } />
+      
      
-      <div className="loginTemplate">
+      
       <TextField
        type="text"
-       style={{ margin: ".25rem" }}
-        inputProps={{ minLength: 8 }}
+       style={{marginTop:"9%", margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
+       
         required
         title="8 character minimum"
         
@@ -58,9 +66,8 @@ const Register = ({ setToken }) => {
 
       <TextField
        type="password"
-       style={{ margin: ".25rem",
-       }}
-        inputProps={{ minLength: 8 }}
+       style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
+        
         required
         title="8 character minimum"
         label="Password"
@@ -68,8 +75,8 @@ const Register = ({ setToken }) => {
       />
       <TextField
       type="password"
-      style={{ margin: ".25rem" }}
-        inputProps={{ minLength: 8 }}
+      style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
+       
         required
         title="8 character minimum"
         label="Confirm Password"
@@ -82,6 +89,7 @@ const Register = ({ setToken }) => {
           borderColor: "black",
           height: "3rem",
           margin: ".25rem",
+          width:"100%" ,
         }}
         variant="contained"
         type="submit"

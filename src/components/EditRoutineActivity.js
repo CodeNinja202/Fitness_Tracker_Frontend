@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Paper, TextField, Button } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { updateRoutineActivity, deleteRoutineActivity } from "../api";
+import logoIMG from "./images/Edit_Routine_activities.jpg";
 const EditRoutineActivity = ({
   token,
   routinesByUser,
@@ -53,7 +54,10 @@ const EditRoutineActivity = ({
   }
 
   return (
-    <Paper elevation={5}>
+    <div elevation={5}>
+       <div >
+      <img src={logoIMG} style={{ width: "100%"}} />
+    </div>
       <form
         className="form"
         onSubmit={(event) => {
@@ -63,33 +67,29 @@ const EditRoutineActivity = ({
           navigate("/my_routines");
         }}
       >
-        <h1>Edit Routines Activity</h1>
+        <div className="edit-routine-activity">
         <TextField
+          style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
           type="number"
           value={newCount}
           onChange={(event) => setNewCount(event.target.value)}
         />
         <TextField
+        style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
           type="number"
           value={newDuration}
           onChange={(event) => setDuration(event.target.value)}
         />
 
         <Button
-          style={{
-            background: "black",
-
-            borderColor: "black",
-          }}
+        style={{color: "white",background: "red", width: "100%",marginBottom:"2%" }}
           type="submit"
           variant="outlined"
         >
           Edit Routine Activity
         </Button>
         <Button
-          style={{
-            background: "black",
-          }}
+          style={{color: "white",background: "red", width: "100%", }}
           type="submit"
           color="error"
           variant="outlined"
@@ -99,8 +99,9 @@ const EditRoutineActivity = ({
         >
           Delete
         </Button>
+        </div>
       </form>
-    </Paper>
+    </div>
   );
 };
 

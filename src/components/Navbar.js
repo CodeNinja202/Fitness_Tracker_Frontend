@@ -15,26 +15,29 @@ const Navbar = ({ logout, token }) => {
       <Link style={{ textDecoration: "none"  }} to="/">
         <Button style={{
            color: "white",
+           
         }}>
           
-           <HomeIcon />
+           <HomeIcon /> HOME
           
         </Button>
         </Link>
         <Link style={{ textDecoration: "none" }} to="/activities">
         <Button style={{
            color: "white",
+           fontFamily:"'Lato', sans-serif"
         }}>
           
-           <FitnessCenterIcon/>
+           <FitnessCenterIcon/>ACTIVITIES
             </Button>
           </Link>
           <Link style={{ textDecoration: "none" }} to="/routines">
         <Button style={{
            color: "white",
+          
         }}>
           
-          <EventNoteIcon/>
+          <EventNoteIcon/>ROUTINES
             </Button>
           </Link>
         
@@ -44,9 +47,10 @@ const Navbar = ({ logout, token }) => {
           <Link style={{ textDecoration: "none" }} to="/my_routines">
             <Button style={{
            color: "white",
+           
         }}>
               
-                <AddCircleOutlineIcon/>
+                <AddCircleOutlineIcon/>MY ROUTINES
              
             </Button>
             </Link>
@@ -55,9 +59,9 @@ const Navbar = ({ logout, token }) => {
                 to="/"
                 onClick={() => logout()}
               >
-            <Button style={{ color: "white" }} >
+            <Button style={{ color: "white",}} >
              
-           < LogoutIcon/> 
+           < LogoutIcon/>LOGOUT
               
             </Button>
             </Link>
@@ -66,7 +70,7 @@ const Navbar = ({ logout, token }) => {
           <Link style={{ textDecoration: "none" }} to="/login">
           <Button style={{ color: "white" }}>
             
-              <LoginIcon/>
+              <LoginIcon/>LOGIN
             
           </Button>
           </Link>
