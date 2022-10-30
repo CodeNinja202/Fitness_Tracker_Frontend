@@ -1,3 +1,33 @@
-#container {
-    background-color: #D0F4C2;
+* {
+    box-sizing: inherit;
+    margin: 0%;
+    padding: 0%;
+
 }
+
+
+.Navbar {
+    background-color: #d82121;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.loginTemplate,.registerTemplate {
+
+    
+   
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding-top: 2%;
+    align-items: center;
+    
+    
+}
+
+
+
+
+
+
