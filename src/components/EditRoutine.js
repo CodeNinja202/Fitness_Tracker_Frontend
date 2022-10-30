@@ -13,7 +13,7 @@ const EditRoutine = ({
     return null;
   }
   const { routineId } = useParams();
-  console.log("Testing Routine by user",routinesByUser)
+  console.log("Testing Routine by user", routinesByUser);
   const currentRoutine = routinesByUser?.filter((routine) => {
     console.log(routine);
     return routine.id === parseInt(routineId);
@@ -47,8 +47,7 @@ const EditRoutine = ({
           event.preventDefault();
           editRoutine();
           fetchUserRoutines();
-         navigate("/my_routines");
-          
+          navigate("/my_routines");
         }}
       >
         <h1>Edit Routines</h1>
@@ -67,19 +66,17 @@ const EditRoutine = ({
           type="checkbox"
           onChange={(event) => setisPublic(event.target.value)}
         />
-<Button
-            style={{
-             
-              background: "black",
-            
-              
-              borderColor: "black",
-            }}
-            type="submit"
-            variant="outlined"
-          >
-            Edit Routine
-          </Button>
+        <Button
+          style={{
+            background: "black",
+
+            borderColor: "black",
+          }}
+          type="submit"
+          variant="outlined"
+        >
+          Edit Routine
+        </Button>
         <Button
           style={{
             background: "black",
@@ -96,7 +93,6 @@ const EditRoutine = ({
       </form>
     </Paper>
   );
-  
 };
 
 export default EditRoutine;

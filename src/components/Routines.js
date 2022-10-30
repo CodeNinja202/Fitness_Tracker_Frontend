@@ -1,20 +1,14 @@
 import React from "react";
 import { Paper } from "@mui/material";
 
-const Routines = ({ routines}) => {
+const Routines = ({ routines }) => {
   return (
-
-    
     <div className="main-div-routines">
-     
       {routines.map((routine) => {
         const { creatorName, name, goal, id, activities, creatorId } = routine;
-      
-        return (
 
-          
+        return (
           <Paper key={routine.id}>
-     
             <p>
               <b>Created by:</b> {routine.creatorName}
             </p>
@@ -26,11 +20,10 @@ const Routines = ({ routines}) => {
             </p>
             <p>
               <b>Activities:</b>
-
             </p>
-      
+
             {activities.map((activity) => {
-              const { description, duration, count, id,  } = activity;
+              const { description, duration, count, id } = activity;
               return (
                 <div key={activity.id}>
                   <p>
@@ -45,8 +38,6 @@ const Routines = ({ routines}) => {
                     <b>Count: </b>
                     {activity.count}
                   </p>
-     
-      
                 </div>
               );
             })}

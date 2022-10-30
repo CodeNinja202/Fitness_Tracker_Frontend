@@ -101,7 +101,7 @@ const App = () => {
   },[token])
 
   return (
-    <div>
+    <div className="main-niv">
       <Navbar logout={logout} token={token} />
       <Routes>
         <Route path="/" element={<Home />} />
