@@ -2,32 +2,54 @@
     box-sizing: inherit;
     margin: 0%;
     padding: 0%;
-
+   
 }
 
 
 .Navbar {
-    background-color: #d82121;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    border-radius: .2rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+    opacity: 90%;
+    background-color: #d82121;
+width: 100%;
 }
 
-.loginTemplate,.registerTemplate {
+.loginTemplate,
+.registerTemplate {
 
-    
-   
+
+
     display: flex;
     flex-direction: column;
     margin: 1rem;
     padding-top: 2%;
     align-items: center;
-    
-    
+
+
 }
 
+.activities-main-div,.main-div-routines {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   justify-content: space-around;
 
 
+}
+
+.activities-inner-div, .routines-inner-div {
 
 
+    
+    align-content: space-around;
+    padding: 3rem 2rem;
+    margin: 10% 5%;
+    border-radius: 1rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 30px 20px #cbced1,
+        -13px -13px 20px #fff;
 
+}

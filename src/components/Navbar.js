@@ -1,18 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
-
+import { Button,  } from "@mui/material";
+import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 const Navbar = ({ logout, token }) => {
   return (
     <header>
       
-      <nav className="Navbar">
+      <nav className="Navbar" style={{ width: "100%"}}>
       <Link style={{ textDecoration: "none"  }} to="/">
         <Button style={{
            color: "white",
         }}>
           
-            Home
+           <HomeIcon />
           
         </Button>
         </Link>
@@ -21,7 +26,7 @@ const Navbar = ({ logout, token }) => {
            color: "white",
         }}>
           
-            Activities
+           <FitnessCenterIcon/>
             </Button>
           </Link>
           <Link style={{ textDecoration: "none" }} to="/routines">
@@ -29,7 +34,7 @@ const Navbar = ({ logout, token }) => {
            color: "white",
         }}>
           
-            Routines
+          <EventNoteIcon/>
             </Button>
           </Link>
         
@@ -41,7 +46,7 @@ const Navbar = ({ logout, token }) => {
            color: "white",
         }}>
               
-                My Routines
+                <AddCircleOutlineIcon/>
              
             </Button>
             </Link>
@@ -52,7 +57,7 @@ const Navbar = ({ logout, token }) => {
               >
             <Button style={{ color: "white" }} >
              
-                Logout
+           < LogoutIcon/> 
               
             </Button>
             </Link>
@@ -61,7 +66,7 @@ const Navbar = ({ logout, token }) => {
           <Link style={{ textDecoration: "none" }} to="/login">
           <Button style={{ color: "white" }}>
             
-              Login
+              <LoginIcon/>
             
           </Button>
           </Link>

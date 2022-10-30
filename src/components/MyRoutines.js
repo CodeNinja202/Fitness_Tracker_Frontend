@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
 import CreateRoutineActivity from "./CreateRoutineActivity";
-
+import logoIMG from "./images/my_routines.gif";
 const MyRoutines = ({
   activities,
   routinesByUser,
@@ -11,6 +11,10 @@ const MyRoutines = ({
   token,
 }) => {
   return (
+    <form>
+      <div >
+      <img src={logoIMG} style={{ width: "100%"}} />
+    </div>
     <div className="main-div-routinesByUser">
       <h1>My Routines</h1>
 
@@ -86,6 +90,7 @@ const MyRoutines = ({
         );
       })}
     </div>
+    </form>
   );
 };
 

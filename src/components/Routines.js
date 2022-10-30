@@ -3,12 +3,14 @@ import { Paper } from "@mui/material";
 
 const Routines = ({ routines }) => {
   return (
+    <form>
     <div className="main-div-routines">
       {routines.map((routine) => {
         const { creatorName, name, goal, id, activities, creatorId } = routine;
 
         return (
           <Paper key={routine.id}>
+            <div className="routines-inner-div" >
             <p>
               <b>Created by:</b> {routine.creatorName}
             </p>
@@ -21,11 +23,12 @@ const Routines = ({ routines }) => {
             <p>
               <b>Activities:</b>
             </p>
-
+            </div>
             {activities.map((activity) => {
               const { description, duration, count, id } = activity;
               return (
                 <div key={activity.id}>
+                  
                   <p>
                     <b>Description: </b>
                     {activity.description}
@@ -38,14 +41,17 @@ const Routines = ({ routines }) => {
                     <b>Count: </b>
                     {activity.count}
                   </p>
-                </div>
+                  </div>
+                
               );
             })}
           </Paper>
         );
       })}
     </div>
+    </form>
   );
+ 
 };
 
 export default Routines;

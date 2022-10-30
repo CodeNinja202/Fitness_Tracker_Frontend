@@ -124,7 +124,7 @@ const App = () => {
           navigate={navigate} fetchActivities={fetchActivities} />}
         />
         <Route path="/activities/edit/:activityId" element={<EditActivity activities={activities} token={token} fetchActivities={fetchActivities} navigate={navigate} />} />
-        <Route path="/routines" element={<Routines routines={routines}  token={token}/>} />
+        <Route path="/routines" element={<Routines routines={routines}  token={token} fetchActivities={fetchActivities}/>} />
         <Route path="/routines/create_routine" element={<CreateRoutine token={token} fetchRoutines={fetchRoutines}  navigate={navigate} />} />
         <Route
              
