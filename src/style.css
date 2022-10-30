@@ -13,11 +13,10 @@
     flex-wrap: wrap;
 }
 
-.loginTemplate {
+.loginTemplate,.registerTemplate {
 
     
    
-    font-weight: 700;
     display: flex;
     flex-direction: column;
     margin: 1rem;

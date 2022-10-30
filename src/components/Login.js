@@ -38,7 +38,7 @@ const Login = ({ setToken, navigate }) => {
 
         <TextField
  type="text"
-          style={{ margin: ".25rem", width:"23rem" }}
+          style={{ margin: ".25rem" }}
           label="Enter Username"
           onChange={(event) => setUsername(event.target.value)}
         />
@@ -46,13 +46,14 @@ const Login = ({ setToken, navigate }) => {
         <TextField
         
         type="password"
-          style={{ margin: ".25rem", width:"23rem" }}
+          style={{ margin: ".25rem" }}
           label="Enter Password"
           onChange={(event) => setPassword(event.target.value)}
         />
         <Button
           style={{
-            width:"23rem",
+            background: "red",
+            width:"12rem",
             borderColor: "black",
             height: "3rem",
             margin: ".25rem",
@@ -66,7 +67,8 @@ const Login = ({ setToken, navigate }) => {
         <Link style={{ textDecoration: "none" }} to="/register">
           <Button
             style={{
-              width:"23rem",
+              background: "red",
+              width:"12rem",
               borderColor: "black",
               height: "3rem",
               margin: ".25rem",
@@ -74,7 +76,7 @@ const Login = ({ setToken, navigate }) => {
             variant="contained"
             type="submit"
           >
-            Don't have an account? Sign Up
+             Sign Up
           </Button>
         </Link>
       </div>

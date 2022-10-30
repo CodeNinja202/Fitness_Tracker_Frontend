@@ -7,46 +7,64 @@ const Navbar = ({ logout, token }) => {
     <header>
       
       <nav className="Navbar">
-      
-        <Button>
-          <Link style={{ textDecoration: "none" }} to="/">
+      <Link style={{ textDecoration: "none"  }} to="/">
+        <Button style={{
+           color: "white",
+        }}>
+          
             Home
-          </Link>
+          
         </Button>
-        <Button>
-          <Link style={{ textDecoration: "none" }} to="/activities">
+        </Link>
+        <Link style={{ textDecoration: "none" }} to="/activities">
+        <Button style={{
+           color: "white",
+        }}>
+          
             Activities
+            </Button>
           </Link>
-        </Button>
-        <Button>
           <Link style={{ textDecoration: "none" }} to="/routines">
+        <Button style={{
+           color: "white",
+        }}>
+          
             Routines
+            </Button>
           </Link>
-        </Button>
+        
 
         {token ? (
           <>
-            <Button>
-              <Link style={{ textDecoration: "none" }} to="/my_routines">
+          <Link style={{ textDecoration: "none" }} to="/my_routines">
+            <Button style={{
+           color: "white",
+        }}>
+              
                 My Routines
-              </Link>
+             
             </Button>
-            <Button style={{ borderColor: "black" }} variant="outlined">
-              <Link
+            </Link>
+            <Link
                 style={{ textDecoration: "none" }}
                 to="/"
                 onClick={() => logout()}
               >
+            <Button style={{ color: "white" }} >
+             
                 Logout
-              </Link>
+              
             </Button>
+            </Link>
           </>
         ) : (
-          <Button>
-            <Link style={{ textDecoration: "none" }} to="/login">
+          <Link style={{ textDecoration: "none" }} to="/login">
+          <Button style={{ color: "white" }}>
+            
               Login
-            </Link>
+            
           </Button>
+          </Link>
         )}
       </nav>
     </header>

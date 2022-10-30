@@ -1,5 +1,5 @@
 import React from "react";
-import logoIMG from "./images/home_page.jpg";
+import logoIMG from "./images/homePage.GIF";
 const Home = () => {
   return (
     <div className="homePage">

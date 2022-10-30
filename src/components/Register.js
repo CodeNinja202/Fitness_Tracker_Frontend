@@ -40,13 +40,14 @@ const Register = ({ setToken }) => {
         handleSubmit();
       }}
     >
-        <div className="logo" >
+        <div className="registerTemplate" >
       <img src={log_reg_PIC } />
       </div>
      
       <div className="loginTemplate">
       <TextField
        type="text"
+       style={{ margin: ".25rem" }}
         inputProps={{ minLength: 8 }}
         required
         title="8 character minimum"
@@ -57,6 +58,8 @@ const Register = ({ setToken }) => {
 
       <TextField
        type="password"
+       style={{ margin: ".25rem",
+       }}
         inputProps={{ minLength: 8 }}
         required
         title="8 character minimum"
@@ -65,6 +68,7 @@ const Register = ({ setToken }) => {
       />
       <TextField
       type="password"
+      style={{ margin: ".25rem" }}
         inputProps={{ minLength: 8 }}
         required
         title="8 character minimum"
@@ -73,6 +77,8 @@ const Register = ({ setToken }) => {
       />
       <Button
         style={{
+          background: "red",
+          width:"12rem",
           borderColor: "black",
           height: "3rem",
           margin: ".25rem",
