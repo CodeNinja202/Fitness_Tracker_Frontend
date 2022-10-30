@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Paper } from "@mui/material";
+import { Button} from "@mui/material";
 import logoIMG from "./images/routine.gif";
 const Routines = ({ routines }) => {
   return (
@@ -23,10 +23,8 @@ const Routines = ({ routines }) => {
             <p>
               <b>Goal:</b> {routine.goal}
             </p>
-            <p>
-              <b>Activities:</b>
-            </p>
-            <button onClick={(event)=>{
+           
+            <Button  style={{marginBottom:"2%",color: "white",background: "red", width: "100%"}} onClick={(event)=>{
               event.preventDefault()
               if(display === "none"){
                 setDisplay('block')
@@ -35,15 +33,20 @@ const Routines = ({ routines }) => {
               }
             
             }
-            }>Show Activities</button>
+            }>Show Activities</Button>
             </div>
-            <div style={{display:display}}>
+            <div className="activity-box" style={{display:display}}>
 
             {activities.map((activity) => {
               
               const { description, duration, count, id } = activity;
               return (
-                <div key={activity.id}>
+                <div style={{
+                  padding:"2%",
+                  borderRadius:"2%",
+                  marginTop:"5%", margin: "2%",
+                  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff"
+                }} key={activity.id}>
                   
                   <p>
                     <b>Description: </b>

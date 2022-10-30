@@ -15,6 +15,7 @@ const Navbar = ({ logout, token }) => {
       <Link style={{ textDecoration: "none"  }} to="/">
         <Button style={{
            color: "white",
+           
         }}>
           
            <HomeIcon /> HOME
@@ -24,6 +25,7 @@ const Navbar = ({ logout, token }) => {
         <Link style={{ textDecoration: "none" }} to="/activities">
         <Button style={{
            color: "white",
+           fontFamily:"'Lato', sans-serif"
         }}>
           
            <FitnessCenterIcon/>ACTIVITIES
@@ -32,6 +34,7 @@ const Navbar = ({ logout, token }) => {
           <Link style={{ textDecoration: "none" }} to="/routines">
         <Button style={{
            color: "white",
+          
         }}>
           
           <EventNoteIcon/>ROUTINES
@@ -44,6 +47,7 @@ const Navbar = ({ logout, token }) => {
           <Link style={{ textDecoration: "none" }} to="/my_routines">
             <Button style={{
            color: "white",
+           
         }}>
               
                 <AddCircleOutlineIcon/>MY ROUTINES
@@ -55,7 +59,7 @@ const Navbar = ({ logout, token }) => {
                 to="/"
                 onClick={() => logout()}
               >
-            <Button style={{ color: "white" }} >
+            <Button style={{ color: "white",}} >
              
            < LogoutIcon/>LOGOUT
               

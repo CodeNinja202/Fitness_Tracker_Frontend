@@ -15,6 +15,7 @@
     opacity: 90%;
     background-color: #d82121;
 width: 100%;
+
 }
 
 .loginTemplate,
@@ -95,6 +96,19 @@ width: 100%;
     
     padding: 3rem 2rem;
     margin: 1% 35%;
+    border-radius: 1rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 30px 20px #cbced1,
+        -13px -13px 20px #fff;
+}
+
+
+.activity-box{
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+    margin: 2%;
+ padding: 10%;
     border-radius: 1rem;
     background-color: #ecf0f3;
     box-shadow: 13px 30px 20px #cbced1,

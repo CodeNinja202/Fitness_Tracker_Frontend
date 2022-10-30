@@ -33,7 +33,7 @@ const MyRoutines = ({
         } = userRoutine;
 
         return (
-          <div key={routineId} >
+          <div  key={routineId} >
             <div className="routine-by-inner-div">
             <p>
               <b>Created by:</b> {creatorName}
@@ -65,7 +65,12 @@ const MyRoutines = ({
               const { routineActivityId, description, duration, count, id, name } =
                 activity;
               return (
-                <div key={id}>
+                <div  style={{
+                  padding:"2%",
+                  borderRadius:"2%",
+                  marginTop:"5%",
+                  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff"
+                }} key={id}>
                    <p>
                     <b>Name: </b>
                     {name}

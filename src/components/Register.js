@@ -55,7 +55,7 @@ const Register = ({ setToken }) => {
       
       <TextField
        type="text"
-       style={{marginTop:"5%", margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
+       style={{marginTop:"9%", margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
        
         required
         title="8 character minimum"
