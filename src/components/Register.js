@@ -14,7 +14,12 @@ const Register = ({ setToken }) => {
       alert("Need UpperCase");
       return null;
     }
+    if(password.length < 8){
+      alert("Password to short")
+      return null;
+    }
     if (password !== confirmPassword) {
+      console.log("bad password")
       alert("Password Does Not Match");
       return null;
     }
@@ -51,7 +56,7 @@ const Register = ({ setToken }) => {
       <TextField
        type="text"
        style={{marginTop:"5%", margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
-        inputProps={{ minLength: 8 }}
+       
         required
         title="8 character minimum"
         
@@ -62,7 +67,7 @@ const Register = ({ setToken }) => {
       <TextField
        type="password"
        style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
-        inputProps={{ minLength: 8 }}
+        
         required
         title="8 character minimum"
         label="Password"
@@ -71,7 +76,7 @@ const Register = ({ setToken }) => {
       <TextField
       type="password"
       style={{ margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
-        inputProps={{ minLength: 8 }}
+       
         required
         title="8 character minimum"
         label="Confirm Password"

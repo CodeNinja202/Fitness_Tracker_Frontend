@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Paper } from "@mui/material";
 import logoIMG from "./images/routine.gif";
 const Routines = ({ routines }) => {
@@ -10,7 +10,7 @@ const Routines = ({ routines }) => {
     <div className="main-div-routines">
       {routines.map((routine) => {
         const { creatorName, name, goal, id, activities, creatorId } = routine;
-
+        const [ display, setDisplay] = useState("none")
         return (
           <div key={routine.id}>
             <div className="routines-inner-div" >
@@ -26,8 +26,21 @@ const Routines = ({ routines }) => {
             <p>
               <b>Activities:</b>
             </p>
+            <button onClick={(event)=>{
+              event.preventDefault()
+              if(display === "none"){
+                setDisplay('block')
+              }else{
+                setDisplay('none')
+              }
+            
+            }
+            }>Show Activities</button>
             </div>
+            <div style={{display:display}}>
+
             {activities.map((activity) => {
+              
               const { description, duration, count, id } = activity;
               return (
                 <div key={activity.id}>
@@ -48,6 +61,7 @@ const Routines = ({ routines }) => {
                 
               );
             })}
+            </div>
           </div>
         );
       })}
