@@ -49,7 +49,9 @@ const EditRoutine = ({
           event.preventDefault();
           editRoutine();
           fetchUserRoutines();
+          
           navigate("/my_routines");
+          location.reload();
         }}
       >
        <div className="edit-routine-div">
