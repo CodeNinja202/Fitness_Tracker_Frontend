@@ -36,6 +36,7 @@ const CreateRoutineActivity = ({
           activityId: activity,
         });
       location.reload();
+      navigate(`/my_routines`);
       }}
     >
       
