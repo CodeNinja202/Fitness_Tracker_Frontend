@@ -6,6 +6,7 @@ const CreateRoutineActivity = ({
   fetchActivities,
   token,
   routineId,
+  navigate,
 }) => {
   const [count, setCount] = useState("");
   const [duration, setDuration] = useState("");
@@ -26,6 +27,7 @@ const CreateRoutineActivity = ({
     <form
       id="create-routine-activity"
       onSubmit={async (event) => {
+        
         event.preventDefault();
         
         await createRoutineActivity({
@@ -35,8 +37,9 @@ const CreateRoutineActivity = ({
           routineId,
           activityId: activity,
         });
+        location.reload();
+        navigate("/my_routines");
         
-      
      
       }}
     >
