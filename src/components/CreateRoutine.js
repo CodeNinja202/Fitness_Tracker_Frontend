@@ -17,7 +17,7 @@ const CreateRoutine = ({ token, navigate, fetchRoutines }) => {
     console.log("TESTING ROUTINE", result);
     fetchRoutines();
     navigate(`/routines`);
-    location.reload();
+   
   }
 
   return (

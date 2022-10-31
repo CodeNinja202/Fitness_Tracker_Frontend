@@ -36,7 +36,7 @@ const CreateRoutineActivity = ({
           activityId: activity,
         });
         
-      location.reload();
+      
      
       }}
     >
