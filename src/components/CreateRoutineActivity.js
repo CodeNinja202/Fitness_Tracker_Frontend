@@ -27,7 +27,7 @@ const CreateRoutineActivity = ({
       id="create-routine-activity"
       onSubmit={async (event) => {
         event.preventDefault();
-       
+        navigate(`/my_routines`);
         await createRoutineActivity({
           token,
           count,
@@ -35,8 +35,9 @@ const CreateRoutineActivity = ({
           routineId,
           activityId: activity,
         });
+       
       location.reload();
-      navigate(`/my_routines`);
+      
       }}
     >
       
