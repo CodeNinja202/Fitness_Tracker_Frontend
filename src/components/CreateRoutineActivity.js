@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TextField, Button} from "@mui/material";
 import { createRoutineActivity } from "../api";
+import { LocalDining } from "@mui/icons-material";
 const CreateRoutineActivity = ({
   activities,
   fetchActivities,
@@ -23,6 +24,19 @@ const CreateRoutineActivity = ({
       .catch(console.error);
   }, []);
 
+
+  async function addRoutineActivity(){
+   const reuslt = await createRoutineActivity({
+      token,
+      count,
+      duration,
+      routineId,
+      activityId: activity,
+    });
+    location.reload();
+    navigate("/my_routines");
+  }
+
   return (
     <form
       id="create-routine-activity"
@@ -30,15 +44,7 @@ const CreateRoutineActivity = ({
         
         event.preventDefault();
         
-        await createRoutineActivity({
-          token,
-          count,
-          duration,
-          routineId,
-          activityId: activity,
-        });
         location.reload();
-        navigate("/my_routines");
         
      
       }}
@@ -86,7 +92,7 @@ const CreateRoutineActivity = ({
       </div>
       
      
-   <Button  variant="outlined" color="error" style={{ color: "white",background: "red", width:"100%"}}type="submit">Add Activity to Routine</Button>
+   <Button  variant="outlined" color="error" style={{ color: "white",background: "red", width:"100%"}}type="submit" onClick={() => addRoutineActivity()}>Add Activity to Routine</Button>
    
     </form>
   );
