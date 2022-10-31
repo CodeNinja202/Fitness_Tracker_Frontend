@@ -35,7 +35,7 @@ const CreateRoutineActivity = ({
           routineId,
           activityId: activity,
         });
-        navigate(`/my_routines`);
+        
       location.reload();
      
       }}
