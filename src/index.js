@@ -12,9 +12,9 @@ const root = ReactDOM.createRoot(container);
 root.render(
   
   <BrowserRouter>
-  <React.Fragment>
-      <CssBaseline enableColorScheme/>
+ 
+      
     <App />
-    </React.Fragment>
+   
   </BrowserRouter>
 );
