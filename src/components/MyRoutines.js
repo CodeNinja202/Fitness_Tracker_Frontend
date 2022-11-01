@@ -59,7 +59,6 @@ const MyRoutines = ({
               fetchActivities={fetchActivities}
               setSearchResults={setSearchResults}
               routineId={routineId}
-             
             />
 
             {routinesActivities.map((activity) => {

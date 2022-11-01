@@ -149,7 +149,7 @@ const App = () => {
         />
         <Route
         path="/routines/:routineId/activities"
-        element={ <CreateRoutineActivity token={token} navigate={navigate} activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>}
+        element={ <CreateRoutineActivity activities={activities} fetchActivities={fetchActivities} setSearchResults={setSearchResults}/>}
       />
      
      <Route
