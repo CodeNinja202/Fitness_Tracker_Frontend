@@ -9,9 +9,9 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 const Navbar = ({ logout, token }) => {
   return (
-    <header>
-      
-      <nav className="Navbar" style={{ width: "100%"}}>
+    
+      <nav>
+      <div className="Navbar" style={{ width: "100%"}}>
       <Link style={{ textDecoration: "none"  }} to="/">
         <Button style={{
            color: "white",
@@ -75,8 +75,9 @@ const Navbar = ({ logout, token }) => {
           </Button>
           </Link>
         )}
+      </div>
       </nav>
-    </header>
+    
   );
 };
 
