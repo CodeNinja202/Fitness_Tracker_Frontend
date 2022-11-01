@@ -49,10 +49,9 @@ const MyRoutines = ({
               style={{ textDecoration: "none" }}
               to={`/routines/edit-routine/${routineId}`}
             >
-              <Button> <EditIcon/>Edit</Button>
+              <Button> <EditIcon/>Edit Routine</Button>
             </Link>
-            <br></br>
-            <b>Choose Activities:</b>
+            
             <CreateRoutineActivity
               token={token}
               activities={activities}
@@ -92,7 +91,7 @@ const MyRoutines = ({
                     style={{ textDecoration: "none" }}
                     to={`/routine_activities/${routineActivityId}/${routineId}`}
                   >
-                    <Button> <EditIcon/>Edit</Button>
+                    <Button> <EditIcon/>Edit Activity</Button>
                   </Link>
                
                 </div>
