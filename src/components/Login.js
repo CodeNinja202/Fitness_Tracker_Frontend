@@ -27,15 +27,16 @@ const Login = ({ setToken, navigate }) => {
         handleSubmit();
       }}
     >
+     
       <div className="loginTemplate">
-        <img
+     
+      <img
           style={{
             borderRadius:"10%",
-            width:"100%"
+           
           }}
           src={log_reg_PIC}
         />
-
         <TextField
  type="text"
  style={{ marginTop:"5%", margin: ".25rem",  width:"100%", boxShadow:"inset 8px 8px 8px #cbced1, inset 8px 8px 8px #fff" }}
